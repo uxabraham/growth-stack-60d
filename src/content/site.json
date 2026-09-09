@@ -2,6 +2,7 @@
   "brand": {
     "name": "Empirika Group",
     "logoText": "EMPIRIKA.GROUP",
+    "logoUrl": "/brand/logo.png",
     "navSolucion": "El sistema",
     "navMetodologia": "Metodología",
     "navCasos": "Casos",

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Container from "@/components/ui/Container";
 import CtaButton from "@/components/ui/CtaButton";
+import BrandLogo from "@/components/ui/BrandLogo";
 import type { BrandContent } from "@/content/types";
 
 const LINKS = [
@@ -18,11 +19,7 @@ export default function Header({ brand }: { brand: BrandContent }) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-empirika-ink/80 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between sm:h-20">
-        <span className="text-sm font-bold tracking-[0.15em] text-white sm:text-base">
-          {brand.logoText.split(".")[0]}
-          <span className="text-empirika-orange">.</span>
-          {brand.logoText.split(".")[1]}
-        </span>
+        <BrandLogo brand={brand} imgClassName="h-6 w-auto sm:h-7" />
 
         <nav className="hidden items-center gap-8 text-sm text-white/70 md:flex">
           {LINKS.map((link) => (

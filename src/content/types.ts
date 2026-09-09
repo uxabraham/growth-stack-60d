@@ -111,6 +111,7 @@ export type FinalCtaContent = {
 export type BrandContent = {
   name: string;
   logoText: string;
+  logoUrl: string;
   navSolucion: string;
   navMetodologia: string;
   navCasos: string;

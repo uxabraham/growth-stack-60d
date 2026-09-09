@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import type { SiteContent } from "@/content/types";
-import { Card, Row, Field, TextInput, TextArea, StringListEditor, AddButton, RemoveButton } from "@/components/admin/fields";
+import { Card, Row, Field, TextInput, TextArea, StringListEditor, AddButton, RemoveButton, ImageUpload } from "@/components/admin/fields";
 
 const DRAFT_KEY = "gs60d_admin_draft_v1";
 
@@ -200,13 +200,21 @@ export default function ContentEditor() {
                 onChange={(v) => update("brand", { ...content.brand, name: v })}
               />
             </Field>
-            <Field label="Texto del logo">
+            <Field label="Texto de respaldo (si no hay logo)">
               <TextInput
                 value={content.brand.logoText}
                 onChange={(v) => update("brand", { ...content.brand, logoText: v })}
               />
             </Field>
           </Row>
+          <Field label="Logo">
+            <ImageUpload
+              slot="logo"
+              value={content.brand.logoUrl}
+              onChange={(url) => update("brand", { ...content.brand, logoUrl: url })}
+              hint="PNG, JPG, SVG o WebP · máx. 5MB · idealmente fondo transparente"
+            />
+          </Field>
           <Row>
             <Field label="CTA del header">
               <TextInput
