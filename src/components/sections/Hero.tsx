@@ -1,11 +1,16 @@
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import CtaButton from "@/components/ui/CtaButton";
 import Reveal from "@/components/ui/Reveal";
+import RevealText from "@/components/ui/RevealText";
+import type { HeroContent } from "@/content/types";
 
-export default function Hero() {
+export default function Hero({ content }: { content: HeroContent }) {
   return (
-    <section className="relative overflow-hidden bg-empirika-ink pb-24 pt-32 text-white sm:pt-40">
-      {/* Ambient background texture */}
+    <section
+      id="hero"
+      className="relative overflow-hidden bg-empirika-ink pb-20 pt-28 text-white sm:pb-24 sm:pt-40"
+    >
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -25,58 +30,64 @@ export default function Hero() {
       />
 
       <Container className="relative">
-        <Reveal>
-          <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto max-w-4xl text-center">
+          <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/50">
-              Consultora de crecimiento digital
+              {content.eyebrow}
             </p>
+          </Reveal>
 
-            <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-              Tu negocio ya funciona.
+          <h1 className="mt-6 text-[2.25rem] font-semibold leading-[1.08] tracking-tight sm:text-6xl">
+            <RevealText as="span" className="block" text={content.titleLine1} />
+            <RevealText
+              as="span"
+              className="block text-empirika-orange"
+              text={content.titleLine2}
+              wordDelay={40}
+            />
+          </h1>
+
+          <Reveal delay={200}>
+            <p className="mx-auto mt-7 max-w-2xl text-balance text-base leading-relaxed text-white/70 sm:mt-8 sm:text-xl">
+              {content.paragraph}
+            </p>
+          </Reveal>
+
+          <Reveal delay={280}>
+            <p className="mx-auto mt-5 max-w-xl text-sm font-medium text-white/90 sm:mt-6 sm:text-lg">
+              {content.secondaryLine1}
               <br />
-              <span className="text-empirika-orange">
-                Ahora construyamos el sistema para escalarlo.
-              </span>
-            </h1>
-
-            <p className="mx-auto mt-8 max-w-2xl text-balance text-lg leading-relaxed text-white/70 sm:text-xl">
-              Integramos estrategia, adquisición, publicidad, landing pages,
-              CRM, automatización y seguimiento comercial en un solo sistema
-              diseñado para generar nuevas oportunidades y convertirlas en
-              crecimiento real.
+              {content.secondaryLine2}
             </p>
+          </Reveal>
 
-            <p className="mx-auto mt-6 max-w-xl text-base font-medium text-white/90 sm:text-lg">
-              No hacemos marketing por partes.
-              <br />
-              Construimos sistemas de crecimiento.
-            </p>
-
-            <div className="mt-10 flex flex-col items-center gap-4">
-              <CtaButton href="#evaluacion" size="lg">
-                Solicitar evaluación
+          <Reveal delay={360}>
+            <div className="mt-9 flex flex-col items-center gap-4 sm:mt-10">
+              <CtaButton href="#evaluacion" size="lg" trackId="hero-cta">
+                {content.ctaLabel}
               </CtaButton>
-              <span className="text-xs text-white/40">
-                Evaluación estratégica sin costo. Solo para empresas
-                calificadas.
-              </span>
+              <span className="text-xs text-white/40">{content.ctaNote}</span>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
 
-        <Reveal delay={100}>
-          <div className="mx-auto mt-16 flex max-w-md items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:max-w-lg">
-            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/[0.02] text-lg font-semibold text-white/70">
-              CM
+        <Reveal delay={100} trackId="hero">
+          <div className="mx-auto mt-14 flex max-w-md items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:mt-16 sm:max-w-lg">
+            <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-white/5">
+              <Image
+                src="/team/carlos-montes.png"
+                alt={content.founderName}
+                fill
+                sizes="64px"
+                priority
+                className="object-cover"
+              />
             </div>
             <div className="text-left">
               <p className="text-sm font-semibold text-white">
-                Carlos Montes — CEO, Empirika Group
+                {content.founderName} — {content.founderRole}
               </p>
-              <p className="text-xs text-white/50">
-                Operador de crecimiento, no gurú de marketing. Espacio
-                reservado para foto / video del fundador.
-              </p>
+              <p className="text-xs text-white/50">{content.founderNote}</p>
             </div>
           </div>
         </Reveal>
@@ -84,26 +95,33 @@ export default function Hero() {
         <Reveal delay={150}>
           <div className="mx-auto mt-6 flex max-w-lg flex-wrap items-center justify-center gap-2">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-empirika-orange/30 bg-empirika-orange/10 px-3 py-1.5 text-xs font-medium text-empirika-orange">
-              ⚡ Especializado en escalar negocios
+              {content.badge1}
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-empirika-orange/30 bg-empirika-orange/10 px-3 py-1.5 text-xs font-medium text-empirika-orange">
-              ⚡ Casos de éxito comprobados
+              {content.badge2}
             </span>
           </div>
         </Reveal>
 
         <Reveal delay={200}>
-          <div className="mx-auto mt-16 flex max-w-3xl flex-col items-center justify-center gap-4 border-t border-white/10 pt-8 text-center sm:flex-row sm:gap-10 sm:divide-x sm:divide-white/10">
+          <div className="mx-auto mt-14 flex max-w-3xl flex-col items-center justify-center gap-3 border-t border-white/10 pt-8 text-center sm:mt-16 sm:flex-row sm:gap-10 sm:divide-x sm:divide-white/10">
             <span className="text-sm text-white/60 sm:pr-10">
-              <span className="font-semibold text-white">+500</span> marcas
-              acompañadas
+              <span className="font-semibold text-white">
+                {content.statBrands}
+              </span>{" "}
+              marcas acompañadas
             </span>
             <span className="text-sm text-white/60 sm:px-10">
-              <span className="font-semibold text-white">11</span> países
+              <span className="font-semibold text-white">
+                {content.statCountries}
+              </span>{" "}
+              países
             </span>
             <span className="text-sm text-white/60 sm:pl-10">
               Operando desde{" "}
-              <span className="font-semibold text-white">2018</span>
+              <span className="font-semibold text-white">
+                {content.statSince}
+              </span>
             </span>
           </div>
         </Reveal>

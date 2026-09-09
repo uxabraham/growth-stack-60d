@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { trackCtaClick } from "@/lib/analytics";
 
 export default function CtaButton({
   href = "#evaluacion",
@@ -7,15 +10,17 @@ export default function CtaButton({
   variant = "solid",
   size = "md",
   className = "",
+  trackId,
 }: {
   href?: string;
   children: ReactNode;
   variant?: "solid" | "outline" | "ghost-light";
   size?: "md" | "lg";
   className?: string;
+  trackId?: string;
 }) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-200 whitespace-nowrap";
+    "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-200 whitespace-nowrap active:scale-[0.97]";
   const sizes = {
     md: "h-11 px-6 text-sm",
     lg: "h-14 px-8 text-base",
@@ -32,6 +37,7 @@ export default function CtaButton({
   return (
     <Link
       href={href}
+      onClick={() => trackCtaClick(trackId || href)}
       className={`${base} ${sizes[size]} ${variants[variant]} ${className}`}
     >
       {children}

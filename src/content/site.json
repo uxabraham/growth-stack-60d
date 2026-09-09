@@ -1,0 +1,256 @@
+{
+  "brand": {
+    "name": "Empirika Group",
+    "logoText": "EMPIRIKA.GROUP",
+    "navSolucion": "El sistema",
+    "navMetodologia": "Metodología",
+    "navCasos": "Casos",
+    "navInversion": "Inversión",
+    "ctaLabel": "Solicitar evaluación"
+  },
+  "hero": {
+    "eyebrow": "Consultora de crecimiento digital",
+    "titleLine1": "Tu negocio ya funciona.",
+    "titleLine2": "Ahora construyamos el sistema para escalarlo.",
+    "paragraph": "Integramos estrategia, adquisición, publicidad, landing pages, CRM, automatización y seguimiento comercial en un solo sistema diseñado para generar nuevas oportunidades y convertirlas en crecimiento real.",
+    "secondaryLine1": "No hacemos marketing por partes.",
+    "secondaryLine2": "Construimos sistemas de crecimiento.",
+    "ctaLabel": "Solicitar evaluación",
+    "ctaNote": "Evaluación estratégica sin costo. Solo para empresas calificadas.",
+    "founderName": "Carlos Montes",
+    "founderRole": "CEO, Empirika Group",
+    "founderNote": "Operador de crecimiento, no gurú de marketing.",
+    "badge1": "⚡ Especializado en escalar negocios",
+    "badge2": "⚡ Casos de éxito comprobados",
+    "statBrands": "+500",
+    "statCountries": "11",
+    "statSince": "2018"
+  },
+  "vsl": {
+    "title": "Antes de seguir, quiero explicarte algo.",
+    "subtitle": "3 minutos. Sin pitch de ventas. Solo el contexto que necesitas antes de decidir si esto es para ti.",
+    "videoLabel": "Mensaje del fundador · 03:12",
+    "subtitleLabel": "Subtítulos disponibles · ES"
+  },
+  "problem": {
+    "titleLine1": "El problema no es que no hagas marketing.",
+    "titleLine2": "Es que lo haces por partes.",
+    "pieces": [
+      {
+        "label": "Página web",
+        "note": "Diseñada hace tiempo, sin foco en conversión"
+      },
+      {
+        "label": "Ads",
+        "note": "Genera clics, pero nadie sabe qué pasa después"
+      },
+      {
+        "label": "Redes sociales",
+        "note": "Contenido constante, poca conexión a ventas"
+      },
+      {
+        "label": "CRM",
+        "note": "Existe, pero nadie lo actualiza a tiempo"
+      },
+      {
+        "label": "WhatsApp",
+        "note": "Ahí mueren la mayoría de las conversaciones"
+      },
+      {
+        "label": "Ventas",
+        "note": "Depende de la memoria y el esfuerzo individual"
+      }
+    ],
+    "closingLine1": "Tienes piezas.",
+    "closingLine2": "Pero no tienes un sistema."
+  },
+  "solution": {
+    "titleLine1": "No necesitas más herramientas.",
+    "titleLine2": "Necesitas que todo trabaje conectado.",
+    "steps": [
+      "Oferta",
+      "Adquisición",
+      "Conversión",
+      "CRM",
+      "Seguimiento",
+      "Ventas",
+      "Data"
+    ],
+    "closingLine1": "No instalamos herramientas porque sí.",
+    "closingLine2": "Cada componente tiene una función dentro del sistema."
+  },
+  "whatWeBuild": {
+    "title": "Siete componentes. Un solo sistema.",
+    "items": [
+      {
+        "title": "Estrategia y Oferta",
+        "desc": "Clarificamos qué vendes, a quién y por qué deberían elegirte a ti antes que a cualquier otro."
+      },
+      {
+        "title": "Adquisición",
+        "desc": "Campañas y canales diseñados para traer oportunidades calificadas, no solo tráfico."
+      },
+      {
+        "title": "Landing & Conversión",
+        "desc": "Páginas y funnels construidos para convertir visitas en conversaciones reales de venta."
+      },
+      {
+        "title": "CRM",
+        "desc": "Un solo lugar donde vive cada oportunidad, sin que nada se pierda en WhatsApp o Excel."
+      },
+      {
+        "title": "Automatización",
+        "desc": "Seguimiento y respuesta automatizados para que ninguna oportunidad se enfríe por falta de tiempo."
+      },
+      {
+        "title": "Proceso Comercial",
+        "desc": "Guiones, etapas y ritmo comercial definidos para que tu equipo cierre con consistencia."
+      },
+      {
+        "title": "Tracking & Data",
+        "desc": "Visibilidad completa de qué funciona, qué no, y en qué invertir el siguiente dólar."
+      }
+    ],
+    "closingLine1": "No son siete servicios.",
+    "closingLine2": "Es un solo sistema."
+  },
+  "methodology": {
+    "title": "60 días. Una implementación, no un curso.",
+    "phases": [
+      {
+        "phase": "Fase 1",
+        "days": "Días 1–15",
+        "title": "Diagnóstico y estrategia",
+        "desc": "Auditamos tu operación actual, tu oferta y tu data. Definimos el plan del sistema completo."
+      },
+      {
+        "phase": "Fase 2",
+        "days": "Días 16–30",
+        "title": "Construcción",
+        "desc": "Montamos landing, CRM, automatizaciones y estructura de campañas. La base del sistema."
+      },
+      {
+        "phase": "Fase 3",
+        "days": "Días 31–45",
+        "title": "Lanzamiento",
+        "desc": "Activamos adquisición en vivo. El sistema empieza a generar oportunidades reales."
+      },
+      {
+        "phase": "Fase 4",
+        "days": "Días 46–60",
+        "title": "Optimización",
+        "desc": "Ajustamos con datos reales: oferta, mensajes, segmentación y proceso comercial."
+      }
+    ]
+  },
+  "finalResult": {
+    "titleLine1": "El día 60 no deberías tener otra campaña.",
+    "titleLine2": "Deberías tener un Growth Engine funcionando.",
+    "modules": [
+      {
+        "label": "Funnel",
+        "metric": "Activo"
+      },
+      {
+        "label": "CRM",
+        "metric": "Actualizado"
+      },
+      {
+        "label": "Automatizaciones",
+        "metric": "Corriendo"
+      },
+      {
+        "label": "Dashboard",
+        "metric": "En vivo"
+      },
+      {
+        "label": "Data",
+        "metric": "Centralizada"
+      }
+    ]
+  },
+  "cases": {
+    "title": "Sistemas construidos, no promesas.",
+    "statBrands": "+500 marcas asesoradas",
+    "statCountries": "11 países",
+    "statSince": "Operando desde 2018",
+    "authorityBio": "CEO de Empirika Group, agencia especializada en marketing digital para negocios de servicios. Como muchos emprendedores, Carlos empezó haciendo contenido y seguimiento manual. Tras años de prueba y error entendió que el crecimiento no depende de trabajar más, sino de tener un sistema. Así nace Growth Stack 60D®.",
+    "cases": [
+      {
+        "industry": "Servicios para el hogar",
+        "problem": "Dependía casi por completo de referidos. Sin previsibilidad mes a mes.",
+        "build": "Oferta reestructurada, campañas de adquisición, landing de conversión y CRM con seguimiento automatizado.",
+        "result": "Flujo estable de citas calificadas cada semana, sin depender de recomendaciones."
+      },
+      {
+        "industry": "Consultoría B2B",
+        "problem": "Generaba leads, pero se perdían en WhatsApp y hojas de cálculo dispersas.",
+        "build": "CRM centralizado, proceso comercial definido por etapas y tracking de cada oportunidad.",
+        "result": "Ciclo de venta más corto y visibilidad total del pipeline."
+      },
+      {
+        "industry": "Educación / formación",
+        "problem": "Invertía en ads sin saber qué campaña realmente generaba ventas.",
+        "build": "Sistema de tracking end-to-end conectando anuncio, lead, cita y venta.",
+        "result": "Decisiones de inversión publicitaria basadas en datos, no en intuición."
+      }
+    ]
+  },
+  "forWhoNot": {
+    "title": "Para quién es. Para quién no.",
+    "yes": [
+      "Empresas con producto o servicio validado.",
+      "Empresas con ventas actuales.",
+      "Empresas listas para invertir en su crecimiento.",
+      "Equipos con capacidad operativa para atender más demanda."
+    ],
+    "no": [
+      "Emprendedores empezando desde cero.",
+      "Personas buscando community management.",
+      "Empresas esperando resultados mágicos.",
+      "Empresas sin capacidad comercial para atender oportunidades."
+    ]
+  },
+  "investment": {
+    "title": "Una implementación, no un gasto de marketing.",
+    "programName": "Growth Stack 60D",
+    "price": "USD 6.000",
+    "terms": "USD 3.000 al inicio · USD 3.000 en el día 30",
+    "disclaimer": "La inversión publicitaria (Meta Ads, Google Ads) es independiente y se define según el objetivo de crecimiento de tu negocio.",
+    "ctaLabel": "Solicitar evaluación"
+  },
+  "faq": {
+    "title": "Antes de solicitar tu evaluación",
+    "items": [
+      {
+        "q": "¿Esto funciona para cualquier empresa?",
+        "a": "No. Growth Stack 60D está diseñado para empresas que ya tienen un producto o servicio validado y ventas actuales. Si estás empezando desde cero, no es el momento adecuado para este programa."
+      },
+      {
+        "q": "¿Incluye inversión publicitaria?",
+        "a": "No. La implementación (estrategia, construcción y optimización del sistema) es independiente de la inversión en medios pagados. Definimos el presupuesto publicitario recomendado según tu objetivo, pero se administra por separado."
+      },
+      {
+        "q": "¿Necesito tener un equipo comercial?",
+        "a": "Necesitas capacidad de atender nuevas oportunidades. Puede ser un equipo comercial, o tú mismo si estás al frente de las ventas. El sistema está diseñado para que ninguna oportunidad se pierda, pero alguien debe cerrarlas."
+      },
+      {
+        "q": "¿Es una agencia tradicional?",
+        "a": "No. No vendemos servicios sueltos (solo ads, solo una web, solo un CRM). Construimos un sistema completo donde cada componente está conectado y tiene una función específica dentro del proceso de adquisición y conversión."
+      },
+      {
+        "q": "¿Qué pasa después de los 60 días?",
+        "a": "Sales con un Growth Engine funcionando: funnel, CRM, automatizaciones y tracking activos. A partir de ahí, algunos clientes continúan con nosotros en modalidad de gestión continua; otros operan el sistema de forma independiente."
+      }
+    ]
+  },
+  "finalCta": {
+    "titleLine1": "Tu negocio ya demostró que puede vender.",
+    "titleLine2": "Ahora necesita un sistema capaz de escalarlo.",
+    "paragraph": "Completa el formulario. Si tu negocio califica, coordinaremos una evaluación estratégica sin costo con nuestro equipo."
+  },
+  "analyticsSettings": {
+    "ga4Id": "",
+    "plausibleDomain": ""
+  }
+}

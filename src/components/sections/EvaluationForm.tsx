@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { trackFormStep, trackFormSubmit } from "@/lib/analytics";
 
 type FormData = {
   name: string;
@@ -38,6 +39,28 @@ export default function EvaluationForm() {
   const [step, setStep] = useState(1);
   const [data, setData] = useState<FormData>(initialData);
   const [submitted, setSubmitted] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const startedTracking = useRef(false);
+
+  // Only counts step 1 as "started" once the form actually enters the
+  // viewport — mounting alone (it's rendered on every page load) would
+  // otherwise inflate the funnel with visitors who never saw it.
+  useEffect(() => {
+    const node = rootRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !startedTracking.current) {
+          startedTracking.current = true;
+          trackFormStep(1);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   const update = (field: keyof FormData, value: string) =>
     setData((d) => ({ ...d, [field]: value }));
@@ -51,8 +74,14 @@ export default function EvaluationForm() {
   };
 
   const next = () => {
-    if (step < TOTAL_STEPS) setStep(step + 1);
-    else setSubmitted(true);
+    if (step < TOTAL_STEPS) {
+      trackFormStep(step + 1);
+      setStep(step + 1);
+    } else {
+      const qualified = computeScore(data) >= 2;
+      trackFormSubmit(qualified);
+      setSubmitted(true);
+    }
   };
   const back = () => step > 1 && setStep(step - 1);
 
@@ -80,7 +109,10 @@ export default function EvaluationForm() {
   }
 
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-10">
+    <div
+      ref={rootRef}
+      className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-10"
+    >
       <div className="mb-8 flex items-center gap-2">
         {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
           <span

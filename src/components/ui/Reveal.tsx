@@ -1,15 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { trackSectionView } from "@/lib/analytics";
 
 export default function Reveal({
   children,
   delay = 0,
   className = "",
+  trackId,
 }: {
   children: ReactNode;
   delay?: number;
   className?: string;
+  trackId?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -22,6 +25,7 @@ export default function Reveal({
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
+          if (trackId) trackSectionView(trackId);
           observer.disconnect();
         }
       },
@@ -30,7 +34,7 @@ export default function Reveal({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [trackId]);
 
   return (
     <div

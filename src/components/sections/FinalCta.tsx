@@ -1,12 +1,14 @@
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
+import RevealText from "@/components/ui/RevealText";
 import EvaluationForm from "@/components/sections/EvaluationForm";
+import type { FinalCtaContent } from "@/content/types";
 
-export default function FinalCta() {
+export default function FinalCta({ content }: { content: FinalCtaContent }) {
   return (
     <section
       id="evaluacion"
-      className="relative overflow-hidden bg-empirika-ink py-24 text-white sm:py-32"
+      className="relative overflow-hidden bg-empirika-ink py-20 text-white sm:py-32"
     >
       <div
         aria-hidden
@@ -17,24 +19,24 @@ export default function FinalCta() {
         }}
       />
       <Container className="relative">
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-semibold leading-snug tracking-tight sm:text-4xl">
-              Tu negocio ya demostró que puede vender.
-              <br />
-              <span className="text-empirika-orange">
-                Ahora necesita un sistema capaz de escalarlo.
-              </span>
-            </h2>
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-2xl font-semibold leading-snug tracking-tight sm:text-4xl">
+            <RevealText as="span" className="block" text={content.titleLine1} />
+            <RevealText
+              as="span"
+              className="block text-empirika-orange"
+              text={content.titleLine2}
+            />
+          </h2>
+          <Reveal delay={200}>
             <p className="mx-auto mt-5 max-w-lg text-sm text-white/60">
-              Completa el formulario. Si tu negocio califica, coordinaremos
-              una evaluación estratégica sin costo con nuestro equipo.
+              {content.paragraph}
             </p>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
 
-        <Reveal delay={150}>
-          <div className="mx-auto mt-14 max-w-xl">
+        <Reveal delay={150} trackId="finalCta">
+          <div className="mx-auto mt-12 max-w-xl sm:mt-14">
             <EvaluationForm />
           </div>
         </Reveal>

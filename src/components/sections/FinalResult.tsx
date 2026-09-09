@@ -1,32 +1,23 @@
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
+import RevealText from "@/components/ui/RevealText";
+import type { FinalResultContent } from "@/content/types";
 
-const modules = [
-  { label: "Funnel", metric: "Activo" },
-  { label: "CRM", metric: "Actualizado" },
-  { label: "Automatizaciones", metric: "Corriendo" },
-  { label: "Dashboard", metric: "En vivo" },
-  { label: "Data", metric: "Centralizada" },
-];
-
-export default function FinalResult() {
+export default function FinalResult({ content }: { content: FinalResultContent }) {
   return (
-    <section className="bg-empirika-ink py-24 text-white sm:py-32">
+    <section id="resultado" className="bg-empirika-ink py-20 text-white sm:py-32">
       <Container>
-        <Reveal>
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-semibold leading-snug tracking-tight sm:text-4xl">
-              El día 60 no deberías tener otra campaña.
-              <br />
-              <span className="text-empirika-orange">
-                Deberías tener un Growth Engine funcionando.
-              </span>
-            </h2>
-          </div>
-        </Reveal>
+        <h2 className="mx-auto max-w-3xl text-center text-2xl font-semibold leading-snug tracking-tight sm:text-4xl">
+          <RevealText as="span" className="block" text={content.titleLine1} />
+          <RevealText
+            as="span"
+            className="block text-empirika-orange"
+            text={content.titleLine2}
+          />
+        </h2>
 
-        <Reveal delay={150}>
-          <div className="mx-auto mt-16 max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+        <Reveal delay={150} trackId="finalResult">
+          <div className="mx-auto mt-14 max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] sm:mt-16">
             <div className="flex items-center gap-2 border-b border-white/10 px-5 py-3">
               <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
               <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
@@ -36,7 +27,7 @@ export default function FinalResult() {
               </span>
             </div>
             <div className="grid grid-cols-2 gap-px bg-white/10 sm:grid-cols-5">
-              {modules.map((m) => (
+              {content.modules.map((m) => (
                 <div key={m.label} className="bg-empirika-ink px-4 py-6 text-center">
                   <p className="text-xs uppercase tracking-wide text-white/40">
                     {m.label}
