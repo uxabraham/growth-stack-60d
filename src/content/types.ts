@@ -54,6 +54,7 @@ export type MethodologyPhase = {
   days: string;
   title: string;
   desc: string;
+  bullets: string[];
 };
 export type MethodologyContent = {
   title: string;

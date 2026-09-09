@@ -612,6 +612,20 @@ export default function ContentEditor() {
                     }
                   />
                 </div>
+                <div>
+                  <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-wide text-white/40">
+                    Checklist del panel visual
+                  </span>
+                  <StringListEditor
+                    items={phase.bullets ?? []}
+                    placeholder="Entregable de esta fase"
+                    onChange={(bullets) => {
+                      const next = [...content.methodology.phases];
+                      next[i] = { ...next[i], bullets };
+                      update("methodology", { ...content.methodology, phases: next });
+                    }}
+                  />
+                </div>
               </div>
             ))}
             <AddButton
@@ -621,7 +635,7 @@ export default function ContentEditor() {
                   ...content.methodology,
                   phases: [
                     ...content.methodology.phases,
-                    { phase: "", days: "", title: "", desc: "" },
+                    { phase: "", days: "", title: "", desc: "", bullets: [] },
                   ],
                 })
               }

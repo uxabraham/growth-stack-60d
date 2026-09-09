@@ -3,6 +3,7 @@ import Container from "@/components/ui/Container";
 import CtaButton from "@/components/ui/CtaButton";
 import Reveal from "@/components/ui/Reveal";
 import RevealText from "@/components/ui/RevealText";
+import StatCounter from "@/components/ui/StatCounter";
 import type { HeroContent } from "@/content/types";
 
 export default function Hero({ content }: { content: HeroContent }) {
@@ -103,28 +104,11 @@ export default function Hero({ content }: { content: HeroContent }) {
           </div>
         </Reveal>
 
-        <Reveal delay={200}>
-          <div className="mx-auto mt-14 flex max-w-3xl flex-col items-center justify-center gap-3 border-t border-white/10 pt-8 text-center sm:mt-16 sm:flex-row sm:gap-10 sm:divide-x sm:divide-white/10">
-            <span className="text-sm text-white/60 sm:pr-10">
-              <span className="font-semibold text-white">
-                {content.statBrands}
-              </span>{" "}
-              marcas acompañadas
-            </span>
-            <span className="text-sm text-white/60 sm:px-10">
-              <span className="font-semibold text-white">
-                {content.statCountries}
-              </span>{" "}
-              países
-            </span>
-            <span className="text-sm text-white/60 sm:pl-10">
-              Operando desde{" "}
-              <span className="font-semibold text-white">
-                {content.statSince}
-              </span>
-            </span>
-          </div>
-        </Reveal>
+        <div className="mx-auto mt-14 grid max-w-3xl grid-cols-3 items-start gap-4 border-t border-white/10 pt-10 text-center sm:mt-16 sm:gap-10">
+          <StatCounter text={content.statBrands} />
+          <StatCounter text={content.statCountries} />
+          <StatCounter text={content.statSince} />
+        </div>
       </Container>
     </section>
   );

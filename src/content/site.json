@@ -2,7 +2,7 @@
   "brand": {
     "name": "Empirika Group",
     "logoText": "EMPIRIKA.GROUP",
-    "logoUrl": "/brand/logo.png",
+    "logoUrl": "/brand/logo-1788979740966.png",
     "navSolucion": "El sistema",
     "navMetodologia": "Metodología",
     "navCasos": "Casos",
@@ -23,9 +23,9 @@
     "founderNote": "Operador de crecimiento, no gurú de marketing.",
     "badge1": "⚡ Especializado en escalar negocios",
     "badge2": "⚡ Casos de éxito comprobados",
-    "statBrands": "+500",
-    "statCountries": "11",
-    "statSince": "2018"
+    "statBrands": "+500 marcas acompañadas",
+    "statCountries": "11 países",
+    "statSince": "Operando desde 2018"
   },
   "vsl": {
     "title": "Antes de seguir, quiero explicarte algo.",
@@ -122,25 +122,45 @@
         "phase": "Fase 1",
         "days": "Días 1–15",
         "title": "Diagnóstico y estrategia",
-        "desc": "Auditamos tu operación actual, tu oferta y tu data. Definimos el plan del sistema completo."
+        "desc": "Auditamos tu operación actual, tu oferta y tu data. Definimos el plan del sistema completo.",
+        "bullets": [
+          "Auditoría de marketing, ventas y data actual",
+          "Definición de oferta y propuesta de valor",
+          "Mapa del sistema completo a construir"
+        ]
       },
       {
         "phase": "Fase 2",
         "days": "Días 16–30",
         "title": "Construcción",
-        "desc": "Montamos landing, CRM, automatizaciones y estructura de campañas. La base del sistema."
+        "desc": "Montamos landing, CRM, automatizaciones y estructura de campañas. La base del sistema.",
+        "bullets": [
+          "Landing y funnel de conversión",
+          "CRM configurado y conectado",
+          "Automatizaciones de seguimiento"
+        ]
       },
       {
         "phase": "Fase 3",
         "days": "Días 31–45",
         "title": "Lanzamiento",
-        "desc": "Activamos adquisición en vivo. El sistema empieza a generar oportunidades reales."
+        "desc": "Activamos adquisición en vivo. El sistema empieza a generar oportunidades reales.",
+        "bullets": [
+          "Campañas de adquisición activas",
+          "Proceso comercial en marcha",
+          "Primeras oportunidades entrando al CRM"
+        ]
       },
       {
         "phase": "Fase 4",
         "days": "Días 46–60",
         "title": "Optimización",
-        "desc": "Ajustamos con datos reales: oferta, mensajes, segmentación y proceso comercial."
+        "desc": "Ajustamos con datos reales: oferta, mensajes, segmentación y proceso comercial.",
+        "bullets": [
+          "Ajustes basados en data real",
+          "Optimización de mensajes y segmentación",
+          "Growth Engine listo para escalar"
+        ]
       }
     ]
   },

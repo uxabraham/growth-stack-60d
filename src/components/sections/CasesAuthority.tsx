@@ -3,7 +3,22 @@ import Container from "@/components/ui/Container";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
 import RevealText from "@/components/ui/RevealText";
+import StatCounter from "@/components/ui/StatCounter";
+import SpotlightCard from "@/components/ui/SpotlightCard";
 import type { CasesContent, HeroContent } from "@/content/types";
+
+function QuoteMark() {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 32 24"
+      className="h-7 w-8 text-empirika-orange/70"
+      fill="currentColor"
+    >
+      <path d="M9.6 24c-2.4 0-4.4-.85-6-2.55C1.87 19.6 1 17.35 1 14.5c0-3.13 1.07-6.1 3.2-8.9C6.4 2.73 9.33.93 13 0l1.5 3.3c-2.27.8-4.03 1.9-5.3 3.3-1.2 1.33-1.87 2.7-2 4.1.8-.4 1.7-.6 2.7-.6 2 0 3.63.63 4.9 1.9 1.27 1.27 1.9 2.87 1.9 4.8 0 2-.67 3.63-2 4.9-1.27 1.27-2.83 1.9-4.7 1.9zm17 0c-2.4 0-4.4-.85-6-2.55-1.73-1.85-2.6-4.1-2.6-6.95 0-3.13 1.07-6.1 3.2-8.9C23.4 2.73 26.33.93 30 0l1.5 3.3c-2.27.8-4.03 1.9-5.3 3.3-1.2 1.33-1.87 2.7-2 4.1.8-.4 1.7-.6 2.7-.6 2 0 3.63.63 4.9 1.9C33.07 13.27 33.7 14.87 33.7 16.8c0 2-.67 3.63-2 4.9-1.27 1.27-2.83 1.9-4.7 1.9z" />
+    </svg>
+  );
+}
 
 export default function CasesAuthority({
   content,
@@ -51,48 +66,69 @@ export default function CasesAuthority({
           </div>
         </Reveal>
 
-        <Reveal delay={150}>
-          <div className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 border-y border-black/10 py-6 text-xs font-semibold uppercase tracking-widest text-zinc-400">
-            <span>{content.statBrands}</span>
-            <span>{content.statCountries}</span>
-            <span>{content.statSince}</span>
-          </div>
-        </Reveal>
+        <div className="mx-auto mt-12 grid max-w-2xl grid-cols-3 gap-4 border-y border-black/10 py-8 text-center sm:mt-14">
+          <StatCounter
+            text={content.statBrands}
+            numberClassName="text-3xl font-bold text-empirika-ink sm:text-4xl"
+            suffixClassName="block text-[11px] font-medium uppercase tracking-widest text-zinc-400 sm:text-xs"
+          />
+          <StatCounter
+            text={content.statCountries}
+            numberClassName="text-3xl font-bold text-empirika-ink sm:text-4xl"
+            suffixClassName="block text-[11px] font-medium uppercase tracking-widest text-zinc-400 sm:text-xs"
+          />
+          <StatCounter
+            text={content.statSince}
+            numberClassName="text-3xl font-bold text-empirika-ink sm:text-4xl"
+            suffixClassName="block text-[11px] font-medium uppercase tracking-widest text-zinc-400 sm:text-xs"
+          />
+        </div>
 
         <div className="mt-14 grid grid-cols-1 gap-6 sm:mt-16 lg:grid-cols-3">
           {content.cases.map((c, i) => (
             <Reveal key={c.industry} delay={i * 100}>
-              <div className="flex h-full flex-col rounded-2xl border border-black/10 p-6">
-                <span className="inline-block w-fit rounded-full bg-empirika-ink px-3 py-1 text-xs font-semibold text-white">
-                  {c.industry}
-                </span>
-                <div className="mt-5 space-y-4">
+              <SpotlightCard className="flex h-full flex-col p-6">
+                <QuoteMark />
+                <p className="mt-4 text-base font-medium leading-snug text-empirika-ink">
+                  {c.result}
+                </p>
+
+                <div className="mt-5 space-y-3 border-t border-black/10 pt-4">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400">
+                    <p className="text-[11px] font-semibold uppercase tracking-wide text-zinc-400">
                       Problema
                     </p>
-                    <p className="mt-1 text-sm leading-relaxed text-zinc-600">
+                    <p className="mt-1 text-xs leading-relaxed text-zinc-600">
                       {c.problem}
                     </p>
                   </div>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400">
+                    <p className="text-[11px] font-semibold uppercase tracking-wide text-zinc-400">
                       Implementación
                     </p>
-                    <p className="mt-1 text-sm leading-relaxed text-zinc-600">
+                    <p className="mt-1 text-xs leading-relaxed text-zinc-600">
                       {c.build}
                     </p>
                   </div>
+                </div>
+
+                <div className="mt-5 flex items-center gap-3 pt-1">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-empirika-ink text-xs font-bold text-white">
+                    {c.industry
+                      .split(" ")
+                      .slice(0, 2)
+                      .map((w) => w[0])
+                      .join("")
+                      .toUpperCase()}
+                  </span>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-wide text-empirika-orange">
-                      Resultado
+                    <p className="text-sm font-semibold text-empirika-ink">
+                      {c.industry}
                     </p>
-                    <p className="mt-1 text-sm font-medium leading-relaxed text-empirika-ink">
-                      {c.result}
-                    </p>
+                    <p className="text-xs text-zinc-400">Caso de éxito</p>
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
             </Reveal>
           ))}
         </div>
