@@ -3,8 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { SolutionStep } from "@/content/types";
 import { trackSectionView } from "@/lib/analytics";
-
-const STEP_VH = 62;
+import SpotlightCard from "@/components/ui/SpotlightCard";
 
 export default function SolutionScrollStepper({
   steps,
@@ -12,7 +11,7 @@ export default function SolutionScrollStepper({
   steps: SolutionStep[];
 }) {
   const [active, setActive] = useState(0);
-  const sentinelRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -20,15 +19,15 @@ export default function SolutionScrollStepper({
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const i = sentinelRefs.current.indexOf(entry.target as HTMLDivElement);
+            const i = rowRefs.current.indexOf(entry.target as HTMLDivElement);
             if (i !== -1) setActive(i);
           }
         });
       },
-      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+      { rootMargin: "-42% 0px -42% 0px", threshold: 0 }
     );
 
-    sentinelRefs.current.forEach((el) => el && observer.observe(el));
+    rowRefs.current.forEach((el) => el && observer.observe(el));
     return () => observer.disconnect();
   }, [steps.length]);
 
@@ -51,129 +50,99 @@ export default function SolutionScrollStepper({
   const progress = steps.length > 1 ? active / (steps.length - 1) : 0;
 
   return (
-    <div ref={wrapperRef}>
-      {/* Desktop: scroll-driven sticky stepper */}
-      <div
-        className="relative hidden lg:block"
-        style={{ height: `${steps.length * STEP_VH}vh` }}
-      >
-        {steps.map((_, i) => (
-          <div
-            key={i}
-            ref={(el) => {
-              sentinelRefs.current[i] = el;
-            }}
-            className="absolute inset-x-0"
-            style={{
-              top: `${(i / steps.length) * 100}%`,
-              height: `${100 / steps.length}%`,
-            }}
-          />
-        ))}
-
-        <div className="sticky top-28 flex h-[64vh] items-center">
-          <div className="grid w-full grid-cols-[minmax(0,340px)_1fr] gap-16">
-            {/* Left: step list with progress line */}
-            <div className="relative pl-10">
-              <div className="absolute left-3 top-2 bottom-2 w-px bg-white/10">
-                <div
-                  className="w-full bg-empirika-orange transition-all duration-500 ease-out"
-                  style={{ height: `${progress * 100}%` }}
-                />
-              </div>
-              <ul className="space-y-8">
-                {steps.map((step, i) => {
-                  const isActive = i === active;
-                  const isPast = i < active;
-                  return (
-                    <li key={step.title} className="relative">
-                      <span
-                        className={`absolute -left-10 top-0.5 flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold transition-colors duration-500 ${
-                          isActive
-                            ? "bg-empirika-orange text-white"
-                            : isPast
-                              ? "bg-empirika-orange/30 text-empirika-orange"
-                              : "bg-white/10 text-white/40"
-                        }`}
-                      >
-                        {i + 1}
-                      </span>
-                      <p
-                        className={`text-lg font-semibold transition-colors duration-500 ${
-                          isActive ? "text-white" : "text-white/35"
-                        }`}
-                      >
-                        {step.title}
-                      </p>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-
-            {/* Right: active step detail card */}
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.5)]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-6 py-3">
-                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-                <span className="ml-3 text-xs text-white/40">
-                  Growth Stack 60D — El sistema
-                </span>
-              </div>
-              <div
-                key={active}
-                className="p-10"
-                style={{ animation: "solution-step-fade 0.5s ease" }}
-              >
-                <span className="font-mono text-sm text-empirika-orange">
-                  {String(active + 1).padStart(2, "0")} / {String(steps.length).padStart(2, "0")}
-                </span>
-                <h3 className="mt-4 text-3xl font-semibold tracking-tight text-white">
-                  {steps[active].title}
-                </h3>
-                <p className="mt-4 max-w-md text-base leading-relaxed text-white/60">
-                  {steps[active].desc}
-                </p>
-
-                <div className="mt-8 h-1.5 w-full max-w-xs overflow-hidden rounded-full bg-white/10">
-                  <div
-                    className="h-full rounded-full bg-empirika-orange transition-all duration-700 ease-out"
-                    style={{ width: `${((active + 1) / steps.length) * 100}%` }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div ref={wrapperRef} className="relative">
+      {/* Center spine (desktop zigzag) */}
+      <div className="absolute left-1/2 top-2 bottom-2 hidden w-px -translate-x-1/2 bg-white/10 sm:block">
+        <div
+          className="w-full bg-empirika-orange transition-all duration-700 ease-out"
+          style={{ height: `${progress * 100}%` }}
+        />
       </div>
 
-      {/* Mobile / tablet: simple stacked list, no scroll-jacking */}
-      <div className="grid grid-cols-1 gap-3 lg:hidden">
-        {steps.map((step, i) => (
-          <div
-            key={step.title}
-            className="rounded-xl border border-white/10 bg-white/[0.04] p-5"
-          >
-            <div className="flex items-center gap-3">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-empirika-orange/20 text-xs font-bold text-empirika-orange">
-                {i + 1}
-              </span>
-              <p className="text-base font-semibold text-white">{step.title}</p>
-            </div>
-            <p className="mt-2 pl-10 text-sm leading-relaxed text-white/50">
-              {step.desc}
-            </p>
-          </div>
-        ))}
+      {/* Left edge line (mobile) */}
+      <div className="absolute left-3 top-2 bottom-2 w-px bg-white/10 sm:hidden">
+        <div
+          className="w-full bg-empirika-orange transition-all duration-700 ease-out"
+          style={{ height: `${progress * 100}%` }}
+        />
       </div>
 
-      <style>{`
-        @keyframes solution-step-fade {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
+      <div className="space-y-4 py-2 sm:space-y-0">
+        {steps.map((step, i) => {
+          const isActive = i === active;
+          const isPast = i < active;
+          const isRight = i % 2 === 1;
+
+          return (
+            <div
+              key={step.title}
+              ref={(el) => {
+                rowRefs.current[i] = el;
+              }}
+              className={`relative flex sm:py-10 ${
+                isRight ? "sm:justify-end" : "sm:justify-start"
+              }`}
+            >
+              {/* Dot on spine (desktop) */}
+              <span
+                className={`absolute left-1/2 top-10 z-10 hidden h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 transition-all duration-500 sm:block ${
+                  isActive
+                    ? "scale-125 border-empirika-orange bg-empirika-orange shadow-[0_0_0_6px_rgba(253,130,0,0.15)]"
+                    : isPast
+                      ? "border-empirika-orange/50 bg-empirika-orange/30"
+                      : "border-white/20 bg-empirika-ink"
+                }`}
+              />
+
+              {/* Dot on left line (mobile) */}
+              <span
+                className={`absolute left-3 top-6 z-10 h-3 w-3 -translate-x-1/2 rounded-full border-2 transition-all duration-500 sm:hidden ${
+                  isActive
+                    ? "border-empirika-orange bg-empirika-orange"
+                    : isPast
+                      ? "border-empirika-orange/50 bg-empirika-orange/30"
+                      : "border-white/20 bg-empirika-ink"
+                }`}
+              />
+
+              <div className={`w-full pl-10 sm:w-[46%] sm:pl-0 ${isRight ? "sm:pr-0" : ""}`}>
+                <SpotlightCard
+                  tone="dark"
+                  className={`transition-all duration-500 ${
+                    isActive
+                      ? "opacity-100 ring-1 ring-empirika-orange/40"
+                      : "opacity-50 hover:opacity-80"
+                  }`}
+                >
+                  <div className="p-6">
+                    <span
+                      className={`font-mono text-xs transition-colors duration-500 ${
+                        isActive ? "text-empirika-orange" : "text-white/30"
+                      }`}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h3
+                      className={`mt-2 text-xl font-semibold transition-colors duration-500 ${
+                        isActive ? "text-white" : "text-white/50"
+                      }`}
+                    >
+                      {step.title}
+                    </h3>
+                    <p
+                      className={`mt-2 text-sm leading-relaxed transition-colors duration-500 ${
+                        isActive ? "text-white/70" : "text-white/30"
+                      }`}
+                    >
+                      {step.desc}
+                    </p>
+                  </div>
+                </SpotlightCard>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

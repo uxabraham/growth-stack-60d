@@ -6,10 +6,12 @@ export default function SpotlightCard({
   children,
   className = "",
   glowColor = "rgba(253,130,0,0.28)",
+  tone = "light",
 }: {
   children: ReactNode;
   className?: string;
   glowColor?: string;
+  tone?: "light" | "dark";
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -21,11 +23,16 @@ export default function SpotlightCard({
     node.style.setProperty("--spotlight-y", `${e.clientY - rect.top}px`);
   }
 
+  const toneClass =
+    tone === "dark"
+      ? "border-white/10 bg-white/[0.05]"
+      : "border-black/10 bg-white/80";
+
   return (
     <div
       ref={ref}
       onMouseMove={handleMouseMove}
-      className={`group relative overflow-hidden rounded-2xl border border-black/10 bg-white/80 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-empirika-orange/30 hover:shadow-[0_30px_60px_-30px_rgba(0,0,0,0.22)] ${className}`}
+      className={`group relative overflow-hidden rounded-2xl backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-empirika-orange/30 hover:shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)] border ${toneClass} ${className}`}
     >
       <div
         aria-hidden
