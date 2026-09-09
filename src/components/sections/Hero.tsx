@@ -4,9 +4,15 @@ import CtaButton from "@/components/ui/CtaButton";
 import Reveal from "@/components/ui/Reveal";
 import RevealText from "@/components/ui/RevealText";
 import StatCardsGrid from "@/components/ui/StatCardsGrid";
-import type { HeroContent } from "@/content/types";
+import type { HeroContent, VslContent } from "@/content/types";
 
-export default function Hero({ content }: { content: HeroContent }) {
+export default function Hero({
+  content,
+  vsl,
+}: {
+  content: HeroContent;
+  vsl: VslContent;
+}) {
   return (
     <section
       id="hero"
@@ -60,6 +66,41 @@ export default function Hero({ content }: { content: HeroContent }) {
               <br />
               {content.secondaryLine2}
             </p>
+          </Reveal>
+
+          <Reveal delay={320} trackId="vsl">
+            <div className="group relative mx-auto mt-9 aspect-video w-full max-w-xl overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.01] shadow-[0_30px_60px_-30px_rgba(0,0,0,0.8)] sm:mt-10">
+              <div
+                aria-hidden
+                className="absolute inset-0 opacity-40"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)",
+                  backgroundSize: "32px 32px",
+                }}
+              />
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                <button
+                  type="button"
+                  aria-label="Reproducir video"
+                  className="flex h-14 w-14 items-center justify-center rounded-full bg-empirika-orange text-white shadow-[0_20px_40px_-12px_rgba(253,130,0,0.7)] transition-transform duration-200 group-hover:scale-105 sm:h-16 sm:w-16"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="ml-0.5 h-5 w-5 sm:h-6 sm:w-6"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </button>
+                <span className="px-4 text-center text-xs font-medium uppercase tracking-[0.2em] text-white/50">
+                  {vsl.videoLabel}
+                </span>
+              </div>
+              <div className="absolute bottom-3 left-3 rounded-md bg-black/50 px-2.5 py-1 text-[11px] text-white/70 backdrop-blur-sm">
+                {vsl.subtitleLabel}
+              </div>
+            </div>
           </Reveal>
 
           <Reveal delay={360}>

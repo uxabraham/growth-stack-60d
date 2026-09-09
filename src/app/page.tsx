@@ -3,7 +3,6 @@ import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
-import Vsl from "@/components/sections/Vsl";
 import Problem from "@/components/sections/Problem";
 import Solution from "@/components/sections/Solution";
 import WhatWeBuild from "@/components/sections/WhatWeBuild";
@@ -24,8 +23,7 @@ export default async function Home() {
       <AnalyticsProvider />
       <Header brand={content.brand} />
       <main className="flex-1">
-        <Hero content={content.hero} />
-        <Vsl content={content.vsl} />
+        <Hero content={content.hero} vsl={content.vsl} />
         <Problem content={content.problem} />
         <Solution content={content.solution} />
         <WhatWeBuild content={content.whatWeBuild} />
