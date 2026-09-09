@@ -442,11 +442,53 @@ export default function ContentEditor() {
               />
             </Field>
           </Row>
-          <Field label="Pasos del sistema">
-            <StringListEditor
-              items={content.solution.steps}
-              onChange={(steps) => update("solution", { ...content.solution, steps })}
-            />
+          <Field label="Pasos del sistema (scroll interactivo)">
+            <div className="space-y-3">
+              {content.solution.steps.map((step, i) => (
+                <div key={i} className="space-y-2 rounded-lg border border-white/10 p-3">
+                  <div className="flex items-center gap-2">
+                    <input
+                      value={step.title}
+                      onChange={(e) => {
+                        const next = [...content.solution.steps];
+                        next[i] = { ...next[i], title: e.target.value };
+                        update("solution", { ...content.solution, steps: next });
+                      }}
+                      placeholder="Título del paso"
+                      className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange"
+                    />
+                    <RemoveButton
+                      onClick={() =>
+                        update("solution", {
+                          ...content.solution,
+                          steps: content.solution.steps.filter((_, idx) => idx !== i),
+                        })
+                      }
+                    />
+                  </div>
+                  <textarea
+                    value={step.desc}
+                    onChange={(e) => {
+                      const next = [...content.solution.steps];
+                      next[i] = { ...next[i], desc: e.target.value };
+                      update("solution", { ...content.solution, steps: next });
+                    }}
+                    rows={2}
+                    placeholder="Descripción que se muestra en el panel al llegar a este paso"
+                    className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange"
+                  />
+                </div>
+              ))}
+              <AddButton
+                label="Agregar paso"
+                onClick={() =>
+                  update("solution", {
+                    ...content.solution,
+                    steps: [...content.solution.steps, { title: "", desc: "" }],
+                  })
+                }
+              />
+            </div>
           </Field>
           <Row>
             <Field label="Cierre — línea 1">

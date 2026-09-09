@@ -38,10 +38,11 @@ export type ProblemContent = {
   closingLine2: string;
 };
 
+export type SolutionStep = { title: string; desc: string };
 export type SolutionContent = {
   titleLine1: string;
   titleLine2: string;
-  steps: string[];
+  steps: SolutionStep[];
   closingLine1: string;
   closingLine2: string;
 };

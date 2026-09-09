@@ -86,13 +86,34 @@
     "titleLine1": "No necesitas más herramientas.",
     "titleLine2": "Necesitas que todo trabaje conectado.",
     "steps": [
-      "Oferta",
-      "Adquisición",
-      "Conversión",
-      "CRM",
-      "Seguimiento",
-      "Ventas",
-      "Data"
+      {
+        "title": "Oferta",
+        "desc": "Definimos qué vendes, a quién y por qué deberían elegirte a ti antes que a cualquier otro."
+      },
+      {
+        "title": "Adquisición",
+        "desc": "Campañas y canales diseñados para traer oportunidades calificadas, no solo tráfico."
+      },
+      {
+        "title": "Conversión",
+        "desc": "Landing y funnel construidos para convertir visitas en conversaciones reales de venta."
+      },
+      {
+        "title": "CRM",
+        "desc": "Cada oportunidad centralizada en un solo lugar, sin que nada se pierda en WhatsApp o Excel."
+      },
+      {
+        "title": "Seguimiento",
+        "desc": "Automatizaciones que responden antes de que la oportunidad se enfríe por falta de tiempo."
+      },
+      {
+        "title": "Ventas",
+        "desc": "Proceso comercial definido por etapas, con ritmo y consistencia para cerrar."
+      },
+      {
+        "title": "Data",
+        "desc": "Visibilidad completa de qué funciona, qué no, y en qué invertir el siguiente dólar."
+      }
     ],
     "closingLine1": "No instalamos herramientas porque sí.",
     "closingLine2": "Cada componente tiene una función dentro del sistema."
