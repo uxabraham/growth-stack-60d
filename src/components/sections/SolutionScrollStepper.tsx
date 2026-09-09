@@ -52,7 +52,7 @@ export default function SolutionScrollStepper({
   return (
     <div ref={wrapperRef} className="relative">
       {/* Center spine (desktop zigzag) */}
-      <div className="absolute left-1/2 top-2 bottom-2 hidden w-px -translate-x-1/2 bg-white/10 sm:block">
+      <div className="absolute left-1/2 top-2 bottom-2 hidden w-px -translate-x-1/2 bg-on-deep/10 sm:block">
         <div
           className="w-full bg-empirika-orange transition-all duration-700 ease-out"
           style={{ height: `${progress * 100}%` }}
@@ -60,7 +60,7 @@ export default function SolutionScrollStepper({
       </div>
 
       {/* Left edge line (mobile) */}
-      <div className="absolute left-3 top-2 bottom-2 w-px bg-white/10 sm:hidden">
+      <div className="absolute left-3 top-2 bottom-2 w-px bg-on-deep/10 sm:hidden">
         <div
           className="w-full bg-empirika-orange transition-all duration-700 ease-out"
           style={{ height: `${progress * 100}%` }}
@@ -90,7 +90,7 @@ export default function SolutionScrollStepper({
                     ? "scale-125 border-empirika-orange bg-empirika-orange shadow-[0_0_0_6px_rgba(253,130,0,0.15)]"
                     : isPast
                       ? "border-empirika-orange/50 bg-empirika-orange/30"
-                      : "border-white/20 bg-empirika-ink"
+                      : "border-on-deep/20 bg-surface-deep"
                 }`}
               />
 
@@ -101,7 +101,7 @@ export default function SolutionScrollStepper({
                     ? "border-empirika-orange bg-empirika-orange"
                     : isPast
                       ? "border-empirika-orange/50 bg-empirika-orange/30"
-                      : "border-white/20 bg-empirika-ink"
+                      : "border-on-deep/20 bg-surface-deep"
                 }`}
               />
 
@@ -117,21 +117,21 @@ export default function SolutionScrollStepper({
                   <div className="p-6">
                     <span
                       className={`font-mono text-xs transition-colors duration-500 ${
-                        isActive ? "text-empirika-orange" : "text-white/30"
+                        isActive ? "text-empirika-orange" : "text-on-deep/30"
                       }`}
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h3
                       className={`mt-2 text-xl font-semibold transition-colors duration-500 ${
-                        isActive ? "text-white" : "text-white/50"
+                        isActive ? "text-on-deep" : "text-on-deep/50"
                       }`}
                     >
                       {step.title}
                     </h3>
                     <p
                       className={`mt-2 text-sm leading-relaxed transition-colors duration-500 ${
-                        isActive ? "text-white/70" : "text-white/30"
+                        isActive ? "text-on-deep/70" : "text-on-deep/30"
                       }`}
                     >
                       {step.desc}

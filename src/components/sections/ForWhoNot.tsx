@@ -6,7 +6,7 @@ import type { ForWhoNotContent } from "@/content/types";
 
 export default function ForWhoNot({ content }: { content: ForWhoNotContent }) {
   return (
-    <section id="filtro" className="bg-empirika-ink py-20 text-white sm:py-32">
+    <section id="filtro" className="bg-surface-deep py-20 text-on-deep sm:py-32">
       <Container>
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
@@ -25,7 +25,7 @@ export default function ForWhoNot({ content }: { content: ForWhoNotContent }) {
               </h3>
               <ul className="mt-5 space-y-4">
                 {content.yes.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-white/85">
+                  <li key={item} className="flex items-start gap-3 text-sm text-on-deep/85">
                     <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-empirika-orange text-xs font-bold text-white">
                       ✓
                     </span>
@@ -37,14 +37,14 @@ export default function ForWhoNot({ content }: { content: ForWhoNotContent }) {
           </Reveal>
 
           <Reveal delay={100}>
-            <div className="h-full rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8">
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-white/50">
+            <div className="h-full rounded-2xl border border-on-deep/10 bg-on-deep/[0.02] p-6 sm:p-8">
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-on-deep/50">
                 No es para
               </h3>
               <ul className="mt-5 space-y-4">
                 {content.no.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-white/60">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-bold text-white/50">
+                  <li key={item} className="flex items-start gap-3 text-sm text-on-deep/60">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-on-deep/10 text-xs font-bold text-on-deep/50">
                       ×
                     </span>
                     {item}

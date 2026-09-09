@@ -7,7 +7,7 @@ import type { SolutionContent } from "@/content/types";
 
 export default function Solution({ content }: { content: SolutionContent }) {
   return (
-    <section id="solucion" className="bg-empirika-ink pb-20 pt-20 text-white sm:pt-32">
+    <section id="solucion" className="bg-surface-deep pb-20 pt-20 text-on-deep sm:pt-32">
       <Container>
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
@@ -24,7 +24,7 @@ export default function Solution({ content }: { content: SolutionContent }) {
         </div>
 
         <Reveal delay={250}>
-          <p className="mx-auto mt-14 max-w-xl text-center text-lg font-medium leading-relaxed text-white/80 sm:mt-16">
+          <p className="mx-auto mt-14 max-w-xl text-center text-lg font-medium leading-relaxed text-on-deep/80 sm:mt-16">
             {content.closingLine1}
             <br />
             {content.closingLine2}

@@ -1,6 +1,7 @@
 import { getSiteContent } from "@/lib/content";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
+import BackToTop from "@/components/BackToTop";
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
@@ -36,6 +37,7 @@ export default async function Home() {
         <FinalCta content={content.finalCta} />
       </main>
       <Footer brand={content.brand} />
+      <BackToTop />
     </SmoothScrollProvider>
   );
 }

@@ -11,7 +11,7 @@ export default function Faq({ content }: { content: FaqContent }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-empirika-ink py-20 text-white sm:py-32">
+    <section id="faq" className="bg-surface-deep py-20 text-on-deep sm:py-32">
       <Container>
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
@@ -23,7 +23,7 @@ export default function Faq({ content }: { content: FaqContent }) {
         </h2>
 
         <Reveal delay={100} trackId="faq">
-          <div className="mx-auto mt-12 max-w-2xl divide-y divide-white/10 border-y border-white/10 sm:mt-14">
+          <div className="mx-auto mt-12 max-w-2xl divide-y divide-on-deep/10 border-y border-on-deep/10 sm:mt-14">
             {content.items.map((item, i) => {
               const isOpen = open === i;
               return (
@@ -52,7 +52,7 @@ export default function Faq({ content }: { content: FaqContent }) {
                         : "grid-rows-[0fr] opacity-0"
                     }`}
                   >
-                    <p className="min-h-0 text-sm leading-relaxed text-white/60">
+                    <p className="min-h-0 text-sm leading-relaxed text-on-deep/60">
                       {item.a}
                     </p>
                   </div>

@@ -5,6 +5,19 @@
   --foreground: #0a0a0a;
   --empirika-orange: #fd8200;
   --empirika-ink: #0a0a0a;
+
+  /* Theme-aware "deep" surface — the near-black sections in dark mode
+     become a soft light-gray surface (with dark text) in light mode.
+     Small self-contained UI mockups (video player, dashboard cards)
+     intentionally keep using --empirika-ink directly instead of this
+     token, so they read as literal product screenshots in both themes. */
+  --surface-deep: #0a0a0a;
+  --on-deep: #ffffff;
+}
+
+:root[data-theme="light"] {
+  --surface-deep: #f1f1f3;
+  --on-deep: #0a0a0a;
 }
 
 @theme inline {
@@ -12,6 +25,8 @@
   --color-foreground: var(--foreground);
   --color-empirika-orange: var(--empirika-orange);
   --color-empirika-ink: var(--empirika-ink);
+  --color-surface-deep: var(--surface-deep);
+  --color-on-deep: var(--on-deep);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -51,6 +66,12 @@ body {
   opacity: 1;
   transform: translateY(0);
   filter: blur(0);
+}
+
+/* Logo is a white wordmark on transparent bg — invert it in light mode
+   wherever it sits on a surface that flips (e.g. the header). */
+[data-theme="light"] .invert-on-light-theme {
+  filter: invert(1);
 }
 
 @media (prefers-reduced-motion: reduce) {

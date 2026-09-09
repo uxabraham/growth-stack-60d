@@ -8,7 +8,7 @@ export default function FinalCta({ content }: { content: FinalCtaContent }) {
   return (
     <section
       id="evaluacion"
-      className="relative overflow-hidden bg-empirika-ink py-20 text-white sm:py-32"
+      className="relative overflow-hidden bg-surface-deep py-20 text-on-deep sm:py-32"
     >
       <div
         aria-hidden
@@ -29,7 +29,7 @@ export default function FinalCta({ content }: { content: FinalCtaContent }) {
             />
           </h2>
           <Reveal delay={200}>
-            <p className="mx-auto mt-5 max-w-lg text-sm text-white/60">
+            <p className="mx-auto mt-5 max-w-lg text-sm text-on-deep/60">
               {content.paragraph}
             </p>
           </Reveal>

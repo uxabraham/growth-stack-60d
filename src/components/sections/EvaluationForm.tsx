@@ -90,16 +90,16 @@ export default function EvaluationForm() {
     const qualified = score >= 2;
 
     return (
-      <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 text-center sm:p-12">
+      <div className="rounded-3xl border border-on-deep/10 bg-on-deep/[0.03] p-8 text-center sm:p-12">
         <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-empirika-orange text-2xl text-white">
           ✓
         </span>
-        <h3 className="mt-6 text-2xl font-semibold text-white">
+        <h3 className="mt-6 text-2xl font-semibold text-on-deep">
           {qualified
             ? "Tu solicitud fue recibida."
             : "Gracias por tu interés."}
         </h3>
-        <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-white/60">
+        <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-on-deep/60">
           {qualified
             ? `${data.name}, tu perfil coincide con lo que buscamos. Nuestro equipo revisará tu información y te contactará a ${data.email} para coordinar tu evaluación estratégica.`
             : `${data.name}, gracias por completar el formulario. En este momento tu negocio podría no coincidir con el perfil de Growth Stack 60D, pero revisaremos tu información y te contactaremos si es el caso.`}
@@ -111,14 +111,14 @@ export default function EvaluationForm() {
   return (
     <div
       ref={rootRef}
-      className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-10"
+      className="rounded-3xl border border-on-deep/10 bg-on-deep/[0.03] p-6 sm:p-10"
     >
       <div className="mb-8 flex items-center gap-2">
         {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
           <span
             key={i}
             className={`h-1 flex-1 rounded-full transition-colors ${
-              i < step ? "bg-empirika-orange" : "bg-white/10"
+              i < step ? "bg-empirika-orange" : "bg-on-deep/10"
             }`}
           />
         ))}
@@ -130,7 +130,7 @@ export default function EvaluationForm() {
 
       {step === 1 && (
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-white">
+          <h3 className="text-xl font-semibold text-on-deep">
             Información básica
           </h3>
           <Field label="Nombre completo">
@@ -176,7 +176,7 @@ export default function EvaluationForm() {
 
       {step === 2 && (
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-white">
+          <h3 className="text-xl font-semibold text-on-deep">
             Situación actual
           </h3>
           <Field label="Facturación mensual actual">
@@ -209,7 +209,7 @@ export default function EvaluationForm() {
 
       {step === 3 && (
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-white">
+          <h3 className="text-xl font-semibold text-on-deep">
             Objetivo de crecimiento
           </h3>
           <Field label="¿Qué te gustaría lograr en los próximos 60 días?">
@@ -226,7 +226,7 @@ export default function EvaluationForm() {
 
       {step === 4 && (
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-white">Calificación</h3>
+          <h3 className="text-xl font-semibold text-on-deep">Calificación</h3>
           <Field label="Presupuesto disponible para esta implementación">
             <select
               value={data.budget}
@@ -248,7 +248,7 @@ export default function EvaluationForm() {
           type="button"
           onClick={back}
           disabled={step === 1}
-          className="text-sm font-medium text-white/50 transition-colors hover:text-white disabled:opacity-0"
+          className="text-sm font-medium text-on-deep/50 transition-colors hover:text-on-deep disabled:opacity-0"
         >
           Atrás
         </button>
@@ -266,7 +266,7 @@ export default function EvaluationForm() {
 }
 
 const inputClass =
-  "w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-colors focus:border-empirika-orange";
+  "w-full rounded-lg border border-on-deep/15 bg-on-deep/5 px-4 py-3 text-sm text-on-deep placeholder:text-on-deep/30 outline-none transition-colors focus:border-empirika-orange";
 
 function Field({
   label,
@@ -277,7 +277,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-xs font-medium text-white/50">
+      <span className="mb-1.5 block text-xs font-medium text-on-deep/50">
         {label}
       </span>
       {children}

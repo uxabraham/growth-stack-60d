@@ -25,7 +25,7 @@ export default function SpotlightCard({
 
   const toneClass =
     tone === "dark"
-      ? "border-white/10 bg-white/[0.05]"
+      ? "border-on-deep/10 bg-on-deep/[0.05]"
       : "border-black/10 bg-white/80";
 
   return (

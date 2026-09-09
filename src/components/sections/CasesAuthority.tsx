@@ -67,7 +67,7 @@ export default function CasesAuthority({
         </Reveal>
 
         <Reveal delay={150}>
-          <div className="mx-auto mt-12 max-w-4xl rounded-3xl bg-empirika-ink p-4 sm:mt-14 sm:p-6">
+          <div className="mx-auto mt-12 max-w-4xl rounded-3xl bg-surface-deep p-4 sm:mt-14 sm:p-6">
             <StatCardsGrid stats={content.stats} />
           </div>
         </Reveal>

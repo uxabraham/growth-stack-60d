@@ -55,14 +55,14 @@ function Card({
   return (
     <div
       ref={ref}
-      className={`relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-all duration-700 sm:p-8 ${
+      className={`relative flex flex-col overflow-hidden rounded-2xl border border-on-deep/10 bg-on-deep/[0.04] p-6 transition-all duration-700 sm:p-8 ${
         tall ? "sm:row-span-2 sm:justify-center" : ""
       } ${visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <p className="text-sm text-white/55 sm:text-base">{stat.heading}</p>
+      <p className="text-sm text-on-deep/55 sm:text-base">{stat.heading}</p>
       <div className="mt-4 flex items-baseline gap-0.5 leading-none">
-        <span className="tabular-nums text-5xl font-bold text-white sm:text-6xl lg:text-7xl">
+        <span className="tabular-nums text-5xl font-bold text-on-deep sm:text-6xl lg:text-7xl">
           {count.toLocaleString("es")}
         </span>
         {stat.unit && (
@@ -71,7 +71,7 @@ function Card({
           </span>
         )}
       </div>
-      <p className="mt-4 text-sm leading-relaxed text-white/50">
+      <p className="mt-4 text-sm leading-relaxed text-on-deep/50">
         {stat.description}
       </p>
     </div>
