@@ -3,7 +3,7 @@ import Container from "@/components/ui/Container";
 import CtaButton from "@/components/ui/CtaButton";
 import Reveal from "@/components/ui/Reveal";
 import RevealText from "@/components/ui/RevealText";
-import StatCounter from "@/components/ui/StatCounter";
+import StatCardsGrid from "@/components/ui/StatCardsGrid";
 import type { HeroContent } from "@/content/types";
 
 export default function Hero({ content }: { content: HeroContent }) {
@@ -104,10 +104,8 @@ export default function Hero({ content }: { content: HeroContent }) {
           </div>
         </Reveal>
 
-        <div className="mx-auto mt-14 grid max-w-3xl grid-cols-3 items-start gap-4 border-t border-white/10 pt-10 text-center sm:mt-16 sm:gap-10">
-          <StatCounter text={content.statBrands} />
-          <StatCounter text={content.statCountries} />
-          <StatCounter text={content.statSince} />
+        <div className="mx-auto mt-16 max-w-4xl border-t border-white/10 pt-14 sm:mt-20">
+          <StatCardsGrid stats={content.stats} />
         </div>
       </Container>
     </section>

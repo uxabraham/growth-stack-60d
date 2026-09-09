@@ -2,6 +2,7 @@
 
 import { useRef, useState, type ReactNode } from "react";
 import Image from "next/image";
+import type { StatCard } from "@/content/types";
 
 export function Card({
   title,
@@ -200,6 +201,68 @@ export function ImageUpload({
           {error && <p className="mt-1.5 text-[11px] text-red-300">{error}</p>}
         </div>
       </div>
+    </div>
+  );
+}
+
+export function StatCardListEditor({
+  stats,
+  onChange,
+}: {
+  stats: StatCard[];
+  onChange: (stats: StatCard[]) => void;
+}) {
+  const inputClass =
+    "w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange";
+
+  function updateAt(i: number, patch: Partial<StatCard>) {
+    const next = [...stats];
+    next[i] = { ...next[i], ...patch };
+    onChange(next);
+  }
+
+  return (
+    <div className="space-y-3">
+      {stats.map((stat, i) => (
+        <div key={i} className="space-y-2 rounded-lg border border-white/10 p-3">
+          <input
+            value={stat.heading}
+            onChange={(e) => updateAt(i, { heading: e.target.value })}
+            placeholder="Encabezado pequeño (ej: Marcas que ya construyeron su sistema)"
+            className={inputClass}
+          />
+          <div className="grid grid-cols-2 gap-2">
+            <input
+              value={stat.number}
+              onChange={(e) => updateAt(i, { number: e.target.value })}
+              placeholder="Número (ej: 500)"
+              className={inputClass}
+            />
+            <input
+              value={stat.unit}
+              onChange={(e) => updateAt(i, { unit: e.target.value })}
+              placeholder="Unidad (ej: +, %) — opcional"
+              className={inputClass}
+            />
+          </div>
+          <div className="flex items-start gap-2">
+            <textarea
+              value={stat.description}
+              onChange={(e) => updateAt(i, { description: e.target.value })}
+              rows={2}
+              placeholder="Descripción debajo del número"
+              className={inputClass}
+            />
+            <RemoveButton onClick={() => onChange(stats.filter((_, idx) => idx !== i))} />
+          </div>
+        </div>
+      ))}
+      <AddButton
+        label="Agregar stat"
+        onClick={() =>
+          onChange([...stats, { heading: "", number: "", unit: "", description: "" }])
+        }
+      />
     </div>
   );
 }

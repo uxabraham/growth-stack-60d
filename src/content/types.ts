@@ -1,3 +1,10 @@
+export type StatCard = {
+  heading: string;
+  number: string;
+  unit: string;
+  description: string;
+};
+
 export type HeroContent = {
   eyebrow: string;
   titleLine1: string;
@@ -12,9 +19,7 @@ export type HeroContent = {
   founderNote: string;
   badge1: string;
   badge2: string;
-  statBrands: string;
-  statCountries: string;
-  statSince: string;
+  stats: StatCard[];
 };
 
 export type VslContent = {
@@ -75,9 +80,7 @@ export type CaseItem = {
 };
 export type CasesContent = {
   title: string;
-  statBrands: string;
-  statCountries: string;
-  statSince: string;
+  stats: StatCard[];
   authorityBio: string;
   cases: CaseItem[];
 };

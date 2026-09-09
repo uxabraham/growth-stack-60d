@@ -23,9 +23,26 @@
     "founderNote": "Operador de crecimiento, no gurú de marketing.",
     "badge1": "⚡ Especializado en escalar negocios",
     "badge2": "⚡ Casos de éxito comprobados",
-    "statBrands": "+500 marcas acompañadas",
-    "statCountries": "11 países",
-    "statSince": "Operando desde 2018"
+    "stats": [
+      {
+        "heading": "Marcas que ya construyeron su sistema",
+        "number": "500",
+        "unit": "+",
+        "description": "Empresas de distintos rubros que dejaron de depender solo de referidos y hoy tienen un sistema propio de adquisición y conversión."
+      },
+      {
+        "heading": "Presencia en distintos mercados",
+        "number": "11",
+        "unit": "",
+        "description": "Operamos con clientes en múltiples países de LatAm, adaptando el sistema a cada mercado y su forma de comprar."
+      },
+      {
+        "heading": "Construyendo sistemas de crecimiento desde",
+        "number": "2018",
+        "unit": "",
+        "description": "Años de experiencia ayudando a negocios a escalar con procesos y datos, no con suerte ni con más esfuerzo."
+      }
+    ]
   },
   "vsl": {
     "title": "Antes de seguir, quiero explicarte algo.",
@@ -192,9 +209,26 @@
   },
   "cases": {
     "title": "Sistemas construidos, no promesas.",
-    "statBrands": "+500 marcas asesoradas",
-    "statCountries": "11 países",
-    "statSince": "Operando desde 2018",
+    "stats": [
+      {
+        "heading": "Marcas acompañadas hasta hoy",
+        "number": "500",
+        "unit": "+",
+        "description": "Negocios que ya implementaron Growth Stack 60D u otro sistema con nuestro equipo."
+      },
+      {
+        "heading": "Países donde operamos",
+        "number": "11",
+        "unit": "",
+        "description": "Clientes en distintos mercados de LatAm, con el mismo método probado."
+      },
+      {
+        "heading": "Operando desde",
+        "number": "2018",
+        "unit": "",
+        "description": "Años construyendo sistemas de adquisición y conversión para negocios que ya venden."
+      }
+    ],
     "authorityBio": "CEO de Empirika Group, agencia especializada en marketing digital para negocios de servicios. Como muchos emprendedores, Carlos empezó haciendo contenido y seguimiento manual. Tras años de prueba y error entendió que el crecimiento no depende de trabajar más, sino de tener un sistema. Así nace Growth Stack 60D®.",
     "cases": [
       {

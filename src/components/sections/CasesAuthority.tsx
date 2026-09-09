@@ -3,7 +3,7 @@ import Container from "@/components/ui/Container";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
 import RevealText from "@/components/ui/RevealText";
-import StatCounter from "@/components/ui/StatCounter";
+import StatCardsGrid from "@/components/ui/StatCardsGrid";
 import SpotlightCard from "@/components/ui/SpotlightCard";
 import type { CasesContent, HeroContent } from "@/content/types";
 
@@ -66,23 +66,11 @@ export default function CasesAuthority({
           </div>
         </Reveal>
 
-        <div className="mx-auto mt-12 grid max-w-2xl grid-cols-3 gap-4 border-y border-black/10 py-8 text-center sm:mt-14">
-          <StatCounter
-            text={content.statBrands}
-            numberClassName="text-3xl font-bold text-empirika-ink sm:text-4xl"
-            suffixClassName="block text-[11px] font-medium uppercase tracking-widest text-zinc-400 sm:text-xs"
-          />
-          <StatCounter
-            text={content.statCountries}
-            numberClassName="text-3xl font-bold text-empirika-ink sm:text-4xl"
-            suffixClassName="block text-[11px] font-medium uppercase tracking-widest text-zinc-400 sm:text-xs"
-          />
-          <StatCounter
-            text={content.statSince}
-            numberClassName="text-3xl font-bold text-empirika-ink sm:text-4xl"
-            suffixClassName="block text-[11px] font-medium uppercase tracking-widest text-zinc-400 sm:text-xs"
-          />
-        </div>
+        <Reveal delay={150}>
+          <div className="mx-auto mt-12 max-w-4xl rounded-3xl bg-empirika-ink p-4 sm:mt-14 sm:p-6">
+            <StatCardsGrid stats={content.stats} />
+          </div>
+        </Reveal>
 
         <div className="mt-14 grid grid-cols-1 gap-6 sm:mt-16 lg:grid-cols-3">
           {content.cases.map((c, i) => (

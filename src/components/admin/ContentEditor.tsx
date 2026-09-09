@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import type { SiteContent } from "@/content/types";
-import { Card, Row, Field, TextInput, TextArea, StringListEditor, AddButton, RemoveButton, ImageUpload } from "@/components/admin/fields";
+import { Card, Row, Field, TextInput, TextArea, StringListEditor, StatCardListEditor, AddButton, RemoveButton, ImageUpload } from "@/components/admin/fields";
 
 const DRAFT_KEY = "gs60d_admin_draft_v1";
 
@@ -314,26 +314,12 @@ export default function ContentEditor() {
               />
             </Field>
           </Row>
-          <Row>
-            <Field label="Stat — marcas">
-              <TextInput
-                value={content.hero.statBrands}
-                onChange={(v) => update("hero", { ...content.hero, statBrands: v })}
-              />
-            </Field>
-            <Field label="Stat — países">
-              <TextInput
-                value={content.hero.statCountries}
-                onChange={(v) => update("hero", { ...content.hero, statCountries: v })}
-              />
-            </Field>
-            <Field label="Stat — desde">
-              <TextInput
-                value={content.hero.statSince}
-                onChange={(v) => update("hero", { ...content.hero, statSince: v })}
-              />
-            </Field>
-          </Row>
+          <Field label="Bloque de números (estilo bento, con conteo animado)">
+            <StatCardListEditor
+              stats={content.hero.stats}
+              onChange={(stats) => update("hero", { ...content.hero, stats })}
+            />
+          </Field>
         </Card>
 
         <Card title="Video (VSL)">
@@ -712,24 +698,10 @@ export default function ContentEditor() {
               onChange={(v) => update("cases", { ...content.cases, title: v })}
             />
           </Field>
-          <Row>
-            <Field label="Stat — marcas">
-              <TextInput
-                value={content.cases.statBrands}
-                onChange={(v) => update("cases", { ...content.cases, statBrands: v })}
-              />
-            </Field>
-            <Field label="Stat — países">
-              <TextInput
-                value={content.cases.statCountries}
-                onChange={(v) => update("cases", { ...content.cases, statCountries: v })}
-              />
-            </Field>
-          </Row>
-          <Field label="Stat — desde">
-            <TextInput
-              value={content.cases.statSince}
-              onChange={(v) => update("cases", { ...content.cases, statSince: v })}
+          <Field label="Bloque de números (estilo bento, con conteo animado)">
+            <StatCardListEditor
+              stats={content.cases.stats}
+              onChange={(stats) => update("cases", { ...content.cases, stats })}
             />
           </Field>
           <Field label="Bio de autoridad del fundador">
