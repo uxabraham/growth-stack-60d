@@ -17,6 +17,7 @@ export type HeroContent = {
   founderName: string;
   founderRole: string;
   founderNote: string;
+  founderPhoto: string;
   badge1: string;
   badge2: string;
   stats: StatCard[];
@@ -27,6 +28,7 @@ export type VslContent = {
   subtitle: string;
   videoLabel: string;
   subtitleLabel: string;
+  videoUrl: string;
 };
 
 export type ProblemPiece = { label: string; note: string };

@@ -42,13 +42,15 @@
         "unit": "",
         "description": "Años de experiencia ayudando a negocios a escalar con procesos y datos, no con suerte ni con más esfuerzo."
       }
-    ]
+    ],
+    "founderPhoto": "/team/carlos-montes.png"
   },
   "vsl": {
     "title": "Antes de seguir, quiero explicarte algo.",
     "subtitle": "3 minutos. Sin pitch de ventas. Solo el contexto que necesitas antes de decidir si esto es para ti.",
     "videoLabel": "Mensaje del fundador · 03:12",
-    "subtitleLabel": "Subtítulos disponibles · ES"
+    "subtitleLabel": "Subtítulos disponibles · ES",
+    "videoUrl": ""
   },
   "problem": {
     "titleLine1": "El problema no es que no hagas marketing.",

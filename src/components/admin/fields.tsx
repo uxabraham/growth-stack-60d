@@ -205,6 +205,94 @@ export function ImageUpload({
   );
 }
 
+export function VideoUpload({
+  slot,
+  value,
+  onChange,
+  hint,
+}: {
+  slot: string;
+  value: string;
+  onChange: (url: string) => void;
+  hint?: string;
+}) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleFile(file: File) {
+    setUploading(true);
+    setError(null);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("slot", slot);
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        setError(data.error || "No se pudo subir el archivo.");
+        return;
+      }
+      onChange(data.url);
+    } catch {
+      setError("Error de conexión al subir el archivo.");
+    } finally {
+      setUploading(false);
+    }
+  }
+
+  return (
+    <div>
+      <div className="flex items-center gap-4">
+        <div className="flex h-16 w-32 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/15 bg-black/40">
+          {value ? (
+            <video src={value} className="h-full w-full object-cover" muted />
+          ) : (
+            <span className="text-[10px] text-white/30">Sin video</span>
+          )}
+        </div>
+        <div>
+          <input
+            ref={inputRef}
+            type="file"
+            accept="video/mp4,video/webm"
+            className="hidden"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) handleFile(file);
+              e.target.value = "";
+            }}
+          />
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => inputRef.current?.click()}
+              disabled={uploading}
+              className="rounded-lg border border-white/15 px-3 py-1.5 text-xs font-medium text-white/80 transition-colors hover:border-empirika-orange/50 disabled:opacity-50"
+            >
+              {uploading ? "Subiendo…" : value ? "Cambiar video" : "Subir video"}
+            </button>
+            {value && (
+              <button
+                type="button"
+                onClick={() => onChange("")}
+                className="text-xs text-white/40 hover:text-white/70"
+              >
+                Quitar
+              </button>
+            )}
+          </div>
+          {hint && <p className="mt-1.5 text-[11px] text-white/30">{hint}</p>}
+          {error && <p className="mt-1.5 text-[11px] text-red-300">{error}</p>}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function StatCardListEditor({
   stats,
   onChange,

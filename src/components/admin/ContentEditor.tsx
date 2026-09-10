@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import type { SiteContent } from "@/content/types";
-import { Card, Row, Field, TextInput, TextArea, StringListEditor, StatCardListEditor, AddButton, RemoveButton, ImageUpload } from "@/components/admin/fields";
+import { Card, Row, Field, TextInput, TextArea, StringListEditor, StatCardListEditor, AddButton, RemoveButton, ImageUpload, VideoUpload } from "@/components/admin/fields";
 
 const DRAFT_KEY = "gs60d_admin_draft_v1";
 
@@ -300,6 +300,14 @@ export default function ContentEditor() {
               onChange={(v) => update("hero", { ...content.hero, founderNote: v })}
             />
           </Field>
+          <Field label="Foto del fundador">
+            <ImageUpload
+              slot="founder-photo"
+              value={content.hero.founderPhoto}
+              onChange={(v) => update("hero", { ...content.hero, founderPhoto: v })}
+              hint="Se muestra en el bloque debajo del video, al lado de los números."
+            />
+          </Field>
           <Row>
             <Field label="Badge 1">
               <TextInput
@@ -323,6 +331,14 @@ export default function ContentEditor() {
         </Card>
 
         <Card title="Video (VSL)">
+          <Field label="Video del Hero">
+            <VideoUpload
+              slot="hero-vsl"
+              value={content.vsl.videoUrl}
+              onChange={(v) => update("vsl", { ...content.vsl, videoUrl: v })}
+              hint="MP4 o WebM. Si no subes nada, se muestra el mockup con botón de play."
+            />
+          </Field>
           <Field label="Título">
             <TextInput
               value={content.vsl.title}
