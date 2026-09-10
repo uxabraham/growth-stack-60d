@@ -52,14 +52,24 @@ body {
   filter: blur(0);
 }
 
+/* Premium masked line-reveal: each word rises out of a clipped box
+   rather than just fading in, like a cinematic title card. */
+.reveal-word-mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.2em;
+  margin-bottom: -0.2em;
+  vertical-align: bottom;
+}
+
 .reveal-word {
   display: inline-block;
   opacity: 0;
-  transform: translateY(0.5em);
-  filter: blur(4px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(110%);
+  filter: blur(6px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-word.is-visible {

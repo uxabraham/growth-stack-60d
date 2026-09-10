@@ -35,16 +35,17 @@ export default function RevealText({
 
   return (
     <Tag ref={ref as never} className={className}>
-      {words.map((word, i) => (
-        <span
-          key={i}
-          className={`reveal-word ${visible ? "is-visible" : ""}`}
-          style={{ transitionDelay: `${i * wordDelay}ms` }}
-        >
-          {word}
-          {i < words.length - 1 ? " " : ""}
-        </span>
-      ))}
+      {words.flatMap((word, i) => [
+        <span key={`w-${i}`} className="reveal-word-mask">
+          <span
+            className={`reveal-word ${visible ? "is-visible" : ""}`}
+            style={{ transitionDelay: `${i * wordDelay}ms` }}
+          >
+            {word}
+          </span>
+        </span>,
+        i < words.length - 1 ? " " : null,
+      ])}
     </Tag>
   );
 }
