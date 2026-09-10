@@ -29,7 +29,7 @@ export default function BackToTop() {
       type="button"
       onClick={scrollToTop}
       aria-label="Volver arriba"
-      className={`fixed bottom-5 left-5 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-empirika-orange text-white shadow-[0_10px_30px_-8px_rgba(253,130,0,0.7)] transition-all duration-300 hover:bg-[#e07600] sm:bottom-6 sm:left-6 ${
+      className={`fixed bottom-5 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-empirika-orange text-white shadow-[0_10px_30px_-8px_rgba(253,130,0,0.7)] transition-all duration-300 hover:bg-[#e07600] sm:bottom-6 sm:right-6 ${
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-3 opacity-0"
