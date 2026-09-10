@@ -1,16 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
+import { randomUUID } from "crypto";
 import { isAuthenticated } from "@/lib/auth";
+import { supabaseAdmin, MEDIA_BUCKET } from "@/lib/supabaseAdmin";
+import { insertMediaAsset } from "@/lib/media";
 
 const ALLOWED_TYPES: Record<string, string> = {
   "image/png": "png",
   "image/jpeg": "jpg",
   "image/svg+xml": "svg",
   "image/webp": "webp",
+  "video/mp4": "mp4",
+  "video/webm": "webm",
 };
 
-const MAX_SIZE = 5 * 1024 * 1024; // 5MB
+const MAX_SIZE = 20 * 1024 * 1024; // 20MB
 
 export async function POST(req: NextRequest) {
   if (!(await isAuthenticated())) {
@@ -31,27 +34,42 @@ export async function POST(req: NextRequest) {
   const ext = ALLOWED_TYPES[file.type];
   if (!ext) {
     return NextResponse.json(
-      { ok: false, error: "Formato no soportado. Usa PNG, JPG, SVG o WebP." },
+      { ok: false, error: "Formato no soportado. Usa PNG, JPG, SVG, WebP, MP4 o WebM." },
       { status: 400 }
     );
   }
   if (file.size > MAX_SIZE) {
-    return NextResponse.json({ ok: false, error: "El archivo supera 5MB." }, { status: 400 });
+    return NextResponse.json({ ok: false, error: "El archivo supera 20MB." }, { status: 400 });
   }
 
   try {
     const buffer = Buffer.from(await file.arrayBuffer());
-    const dir = path.join(process.cwd(), "public/brand");
-    await fs.mkdir(dir, { recursive: true });
-    const filename = `${slot}-${Date.now()}.${ext}`;
-    await fs.writeFile(path.join(dir, filename), buffer);
-    return NextResponse.json({ ok: true, url: `/brand/${filename}` });
+    const pathname = `${slot}/${Date.now()}-${randomUUID().slice(0, 8)}.${ext}`;
+
+    const { error: uploadError } = await supabaseAdmin.storage
+      .from(MEDIA_BUCKET)
+      .upload(pathname, buffer, { contentType: file.type, upsert: false });
+    if (uploadError) throw uploadError;
+
+    const { data: publicUrlData } = supabaseAdmin.storage
+      .from(MEDIA_BUCKET)
+      .getPublicUrl(pathname);
+    const url = publicUrlData.publicUrl;
+
+    await insertMediaAsset({
+      id: randomUUID(),
+      url,
+      pathname,
+      mimeType: file.type,
+      size: file.size,
+    });
+
+    return NextResponse.json({ ok: true, url });
   } catch (err) {
     return NextResponse.json(
       {
         ok: false,
-        error:
-          "No se pudo guardar el archivo (sistema de archivos de solo lectura en este entorno).",
+        error: "No se pudo subir el archivo.",
         detail: err instanceof Error ? err.message : String(err),
       },
       { status: 500 }

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { isAuthenticated } from "@/lib/auth";
 import { getSiteContent, writeSiteContent } from "@/lib/content";
 
@@ -22,13 +23,13 @@ export async function POST(req: NextRequest) {
 
   try {
     await writeSiteContent(body);
+    revalidatePath("/");
     return NextResponse.json({ ok: true });
   } catch (err) {
     return NextResponse.json(
       {
         ok: false,
-        error:
-          "No se pudo escribir en el servidor (probablemente el sistema de archivos es de solo lectura en este entorno). Usa 'Descargar JSON' y reemplaza el archivo manualmente.",
+        error: "No se pudo guardar el contenido en la base de datos.",
         detail: err instanceof Error ? err.message : String(err),
       },
       { status: 500 }
