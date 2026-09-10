@@ -153,3 +153,49 @@ body {
     display: none;
   }
 }
+
+/* Preloader — the scroll lock only applies when motion isn't reduced,
+   since the curtain itself is hidden outright for those users below. */
+@media (prefers-reduced-motion: no-preference) {
+  html.is-preloading {
+    overflow: hidden;
+  }
+}
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-deep);
+  transition: transform 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.preloader.is-done {
+  transform: translateY(-100%);
+}
+
+.preloader-mark {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--on-deep);
+  opacity: 0;
+  transform: translateY(14px) scale(0.96);
+  animation: preloader-mark-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+
+@keyframes preloader-mark-in {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader {
+    display: none;
+  }
+}

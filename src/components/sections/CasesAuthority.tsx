@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Eyebrow from "@/components/ui/Eyebrow";
+import Parallax from "@/components/ui/Parallax";
 import Reveal from "@/components/ui/Reveal";
 import RevealText from "@/components/ui/RevealText";
 import StatCardsGrid from "@/components/ui/StatCardsGrid";
@@ -42,14 +43,16 @@ export default function CasesAuthority({
         <Reveal delay={100} trackId="cases">
           <div className="mx-auto mt-12 overflow-hidden rounded-2xl border border-black/10 bg-zinc-50 sm:mt-14">
             <div className="grid grid-cols-1 sm:grid-cols-[220px_1fr]">
-              <div className="relative h-56 w-full sm:h-full">
-                <Image
-                  src="/team/carlos-montes.png"
-                  alt={founder.founderName}
-                  fill
-                  sizes="220px"
-                  className="object-cover"
-                />
+              <div className="relative h-56 w-full overflow-hidden sm:h-full">
+                <Parallax speed={0.1} className="absolute inset-[-10%]">
+                  <Image
+                    src="/team/carlos-montes.png"
+                    alt={founder.founderName}
+                    fill
+                    sizes="220px"
+                    className="object-cover"
+                  />
+                </Parallax>
               </div>
               <div className="flex flex-col justify-center p-6 sm:p-8">
                 <p className="text-sm font-semibold text-empirika-ink">
