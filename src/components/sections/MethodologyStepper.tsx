@@ -3,54 +3,35 @@
 import { useEffect, useRef, useState } from "react";
 import type { MethodologyPhase } from "@/content/types";
 
-const AUTOPLAY_MS = 5000;
-
 export default function MethodologyStepper({
   phases,
 }: {
   phases: MethodologyPhase[];
 }) {
   const [active, setActive] = useState(0);
-  const [playing, setPlaying] = useState(false);
-  const [progressKey, setProgressKey] = useState(0);
-  const rootRef = useRef<HTMLDivElement>(null);
+  const rowRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  // Only start autoplay once the stepper is actually on screen.
   useEffect(() => {
-    const node = rootRef.current;
-    if (!node) return;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setPlaying(true);
-          observer.disconnect();
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const i = rowRefs.current.indexOf(entry.target as HTMLButtonElement);
+            if (i !== -1) setActive(i);
+          }
+        });
       },
-      { threshold: 0.4 }
+      { rootMargin: "-42% 0px -42% 0px", threshold: 0 }
     );
-    observer.observe(node);
+
+    rowRefs.current.forEach((el) => el && observer.observe(el));
     return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!playing) return;
-    const timer = setTimeout(() => {
-      setActive((i) => (i + 1) % phases.length);
-      setProgressKey((k) => k + 1);
-    }, AUTOPLAY_MS);
-    return () => clearTimeout(timer);
-  }, [playing, active, phases.length]);
-
-  function selectPhase(i: number) {
-    setActive(i);
-    setProgressKey((k) => k + 1);
-    setPlaying(true);
-  }
+  }, [phases.length]);
 
   const current = phases[active];
 
   return (
-    <div ref={rootRef} className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
+    <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
       {/* Left: step list */}
       <div className="flex flex-col divide-y divide-black/10">
         {phases.map((phase, i) => {
@@ -58,8 +39,11 @@ export default function MethodologyStepper({
           return (
             <button
               key={phase.phase}
+              ref={(el) => {
+                rowRefs.current[i] = el;
+              }}
               type="button"
-              onClick={() => selectPhase(i)}
+              onClick={() => setActive(i)}
               className="group relative flex items-start gap-4 py-5 text-left"
             >
               <span
@@ -98,27 +82,13 @@ export default function MethodologyStepper({
                   <span className="min-h-0">{phase.desc}</span>
                 </span>
               </span>
-
-              {isActive && (
-                <span className="absolute -bottom-px left-12 right-0 h-0.5 overflow-hidden bg-black/5">
-                  <span
-                    key={progressKey}
-                    className="block h-full origin-left bg-empirika-orange"
-                    style={{
-                      animation: playing
-                        ? `methodology-progress ${AUTOPLAY_MS}ms linear forwards`
-                        : "none",
-                    }}
-                  />
-                </span>
-              )}
             </button>
           );
         })}
       </div>
 
       {/* Right: visual panel */}
-      <div className="relative">
+      <div className="relative lg:sticky lg:top-32 lg:self-start">
         <div className="overflow-hidden rounded-2xl border border-white/10 bg-empirika-ink text-white shadow-[0_40px_80px_-40px_rgba(0,0,0,0.5)]">
           <div className="flex items-center gap-2 border-b border-white/10 px-5 py-3">
             <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
@@ -167,10 +137,6 @@ export default function MethodologyStepper({
       </div>
 
       <style>{`
-        @keyframes methodology-progress {
-          from { transform: scaleX(0); }
-          to { transform: scaleX(1); }
-        }
         @keyframes methodology-fade {
           from { opacity: 0; transform: translateY(8px); }
           to { opacity: 1; transform: translateY(0); }
