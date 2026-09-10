@@ -15,15 +15,17 @@ export default function CustomCursor() {
     const el = dotRef.current;
     if (!el) return;
 
-    document.documentElement.classList.add("custom-cursor-active");
-
     let x = window.innerWidth / 2;
     let y = window.innerHeight / 2;
     let raf: number | null = null;
 
+    // Offset so the icon trails just beside the native pointer, not on top of it.
+    const OFFSET_X = 18;
+    const OFFSET_Y = 22;
+
     function render() {
       raf = null;
-      if (el) el.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+      if (el) el.style.transform = `translate3d(${x + OFFSET_X}px, ${y + OFFSET_Y}px, 0)`;
     }
 
     function onMove(e: MouseEvent) {
@@ -59,7 +61,6 @@ export default function CustomCursor() {
     window.addEventListener("mouseup", onUp);
 
     return () => {
-      document.documentElement.classList.remove("custom-cursor-active");
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseleave", onLeave);
       document.removeEventListener("mouseenter", onEnter);

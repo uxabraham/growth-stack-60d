@@ -84,19 +84,14 @@ body {
   }
 }
 
-/* Custom cursor */
-.custom-cursor-active,
-.custom-cursor-active * {
-  cursor: none !important;
-}
-
+/* Custom cursor — small brand icon that trails alongside the native pointer */
 .custom-cursor {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 9999;
-  width: 34px;
-  height: 34px;
+  width: 46px;
+  height: 46px;
   pointer-events: none;
   will-change: transform;
   transition: opacity 0.2s ease, scale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
