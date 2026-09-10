@@ -17,10 +17,10 @@ import Faq from "@/components/sections/Faq";
 import FinalCta from "@/components/sections/FinalCta";
 import Footer from "@/components/sections/Footer";
 
-// Flat section background colors, in page order — used to blend the
-// seam between sections instead of cutting hard between light and dark.
+// Flat section background colors, in page order — the darker of each
+// adjoining pair is passed to Seam as the color that dissolves across
+// the boundary (every seam here is a dark/white or ink/white pair).
 const DARK = "var(--surface-deep)";
-const WHITE = "#ffffff";
 const INK = "var(--empirika-ink)";
 
 export default async function Home() {
@@ -32,25 +32,25 @@ export default async function Home() {
       <Header brand={content.brand} />
       <main className="flex-1">
         <Hero content={content.hero} vsl={content.vsl} />
-        <Seam from={DARK} to={WHITE} />
+        <Seam tint={DARK} />
         <Problem content={content.problem} />
-        <Seam from={WHITE} to={DARK} />
+        <Seam tint={DARK} />
         <Solution content={content.solution} />
-        <Seam from={DARK} to={WHITE} />
+        <Seam tint={DARK} />
         <WhatWeBuild content={content.whatWeBuild} />
         <Methodology content={content.methodology} />
-        <Seam from={WHITE} to={INK} />
+        <Seam tint={INK} />
         <FinalResult content={content.finalResult} />
-        <Seam from={INK} to={WHITE} />
+        <Seam tint={INK} />
         <CasesAuthority content={content.cases} founder={content.hero} />
-        <Seam from={WHITE} to={DARK} />
+        <Seam tint={DARK} />
         <ForWhoNot content={content.forWhoNot} />
-        <Seam from={DARK} to={WHITE} />
+        <Seam tint={DARK} />
         <Investment content={content.investment} />
-        <Seam from={WHITE} to={DARK} />
+        <Seam tint={DARK} />
         <Faq content={content.faq} />
         <FinalCta content={content.finalCta} />
-        <Seam from={DARK} to={WHITE} />
+        <Seam tint={DARK} />
       </main>
       <Footer brand={content.brand} />
       <BackToTop />
