@@ -1,12 +1,9 @@
-import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Eyebrow from "@/components/ui/Eyebrow";
-import Parallax from "@/components/ui/Parallax";
 import Reveal from "@/components/ui/Reveal";
 import RevealText from "@/components/ui/RevealText";
-import StatCardsGrid from "@/components/ui/StatCardsGrid";
 import SpotlightCard from "@/components/ui/SpotlightCard";
-import type { CasesContent, HeroContent } from "@/content/types";
+import type { CasesContent } from "@/content/types";
 
 function QuoteMark() {
   return (
@@ -21,13 +18,7 @@ function QuoteMark() {
   );
 }
 
-export default function CasesAuthority({
-  content,
-  founder,
-}: {
-  content: CasesContent;
-  founder: HeroContent;
-}) {
+export default function CasesAuthority({ content }: { content: CasesContent }) {
   return (
     <section id="casos" className="bg-white py-20 sm:py-32">
       <Container>
@@ -40,56 +31,21 @@ export default function CasesAuthority({
           <RevealText text={content.title} />
         </h2>
 
-        <Reveal delay={100} trackId="cases">
-          <div className="mx-auto mt-12 overflow-hidden rounded-2xl border border-black/10 bg-zinc-50 sm:mt-14">
-            <div className="grid grid-cols-1 sm:grid-cols-[220px_1fr]">
-              <div className="relative h-56 w-full overflow-hidden sm:h-full">
-                <Parallax speed={0.1} className="absolute inset-[-10%]">
-                  <Image
-                    src="/team/carlos-montes.png"
-                    alt={founder.founderName}
-                    fill
-                    sizes="220px"
-                    className="object-cover"
-                  />
-                </Parallax>
-              </div>
-              <div className="flex flex-col justify-center p-6 sm:p-8">
-                <p className="text-sm font-semibold text-empirika-ink">
-                  {founder.founderName}
-                </p>
-                <p className="text-xs font-medium uppercase tracking-wide text-empirika-orange">
-                  {founder.founderRole}
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-                  {content.authorityBio}
-                </p>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal delay={150}>
-          <div className="mx-auto mt-12 max-w-4xl rounded-3xl bg-surface-deep p-4 sm:mt-14 sm:p-6">
-            <StatCardsGrid stats={content.stats} />
-          </div>
-        </Reveal>
-
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:mt-16 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-8 sm:mt-16 lg:grid-cols-3">
           {content.cases.map((c, i) => (
             <Reveal key={c.industry} delay={i * 100}>
-              <SpotlightCard className="flex h-full flex-col p-6">
+              <SpotlightCard className="flex h-full flex-col p-8 sm:p-10">
                 <QuoteMark />
-                <p className="mt-4 text-base font-medium leading-snug text-empirika-ink">
+                <p className="mt-5 text-xl font-semibold leading-snug tracking-tight text-empirika-ink sm:text-2xl">
                   {c.result}
                 </p>
 
-                <div className="mt-5 space-y-3 border-t border-black/10 pt-4">
+                <div className="mt-6 space-y-4 border-t border-black/10 pt-5">
                   <div>
                     <p className="text-[11px] font-semibold uppercase tracking-wide text-zinc-400">
                       Problema
                     </p>
-                    <p className="mt-1 text-xs leading-relaxed text-zinc-600">
+                    <p className="mt-1.5 text-sm leading-relaxed text-zinc-600">
                       {c.problem}
                     </p>
                   </div>
@@ -97,14 +53,14 @@ export default function CasesAuthority({
                     <p className="text-[11px] font-semibold uppercase tracking-wide text-zinc-400">
                       Implementación
                     </p>
-                    <p className="mt-1 text-xs leading-relaxed text-zinc-600">
+                    <p className="mt-1.5 text-sm leading-relaxed text-zinc-600">
                       {c.build}
                     </p>
                   </div>
                 </div>
 
-                <div className="mt-5 flex items-center gap-3 pt-1">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-empirika-ink text-xs font-bold text-white">
+                <div className="mt-6 flex items-center gap-3 border-t border-black/10 pt-6">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-empirika-ink text-sm font-bold text-white">
                     {c.industry
                       .split(" ")
                       .slice(0, 2)
