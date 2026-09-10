@@ -4,7 +4,7 @@ import CtaButton from "@/components/ui/CtaButton";
 import Parallax from "@/components/ui/Parallax";
 import Reveal from "@/components/ui/Reveal";
 import RevealText from "@/components/ui/RevealText";
-import StatCardsGrid from "@/components/ui/StatCardsGrid";
+import StatInline from "@/components/ui/StatInline";
 import type { HeroContent, VslContent } from "@/content/types";
 
 export default function Hero({
@@ -118,41 +118,65 @@ export default function Hero({
           </div>
         </Reveal>
 
-        <Reveal delay={100} trackId="hero">
-          <div className="mx-auto mt-14 flex max-w-md items-center gap-4 rounded-2xl border border-on-deep/10 bg-on-deep/[0.03] p-4 sm:mt-16 sm:max-w-lg">
-            <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-on-deep/5">
-              <Image
-                src="/team/carlos-montes.png"
-                alt={content.founderName}
-                fill
-                sizes="64px"
-                priority
-                className="object-cover"
+        <Reveal delay={140} trackId="hero">
+          <Parallax speed={0.04} className="mx-auto mt-14 max-w-4xl sm:mt-16">
+            <div className="group relative overflow-hidden rounded-3xl border border-empirika-orange/20 bg-on-deep/[0.03] shadow-[0_50px_120px_-50px_rgba(253,130,0,0.35)]">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(120% 60% at 0% 0%, rgba(253,130,0,0.1), transparent 60%)",
+                }}
               />
-            </div>
-            <div className="text-left">
-              <p className="text-sm font-semibold text-on-deep">
-                {content.founderName} — {content.founderRole}
-              </p>
-              <p className="text-xs text-on-deep/50">{content.founderNote}</p>
-            </div>
-          </div>
-        </Reveal>
+              <div className="relative grid grid-cols-1 lg:grid-cols-[minmax(0,320px)_1fr]">
+                <div className="relative h-64 w-full sm:h-80 lg:h-auto">
+                  <Image
+                    src="/team/carlos-montes.png"
+                    alt={content.founderName}
+                    fill
+                    sizes="(min-width: 1024px) 320px, 100vw"
+                    priority
+                    className="object-cover"
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent lg:bg-gradient-to-r"
+                  />
+                </div>
 
-        <Reveal delay={150}>
-          <div className="mx-auto mt-6 flex max-w-lg flex-wrap items-center justify-center gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-empirika-orange/30 bg-empirika-orange/10 px-3 py-1.5 text-xs font-medium text-empirika-orange">
-              {content.badge1}
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-empirika-orange/30 bg-empirika-orange/10 px-3 py-1.5 text-xs font-medium text-empirika-orange">
-              {content.badge2}
-            </span>
-          </div>
-        </Reveal>
+                <div className="flex flex-col justify-center gap-6 p-7 sm:p-10">
+                  <div>
+                    <p className="text-xl font-semibold tracking-tight text-on-deep sm:text-2xl">
+                      {content.founderName}
+                    </p>
+                    <p className="mt-1 text-sm font-medium text-empirika-orange">
+                      {content.founderRole}
+                    </p>
+                    <p className="mt-3 max-w-md text-sm leading-relaxed text-on-deep/60">
+                      {content.founderNote}
+                    </p>
+                  </div>
 
-        <div className="mx-auto mt-16 max-w-4xl border-t border-on-deep/10 pt-14 sm:mt-20">
-          <StatCardsGrid stats={content.stats} />
-        </div>
+                  <div className="grid grid-cols-3 divide-x divide-on-deep/10 border-t border-on-deep/10 pt-6">
+                    {content.stats.map((stat, i) => (
+                      <StatInline key={stat.heading} stat={stat} delay={i * 150} />
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-empirika-orange/30 bg-empirika-orange/10 px-3 py-1.5 text-xs font-medium text-empirika-orange">
+                      {content.badge1}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-empirika-orange/30 bg-empirika-orange/10 px-3 py-1.5 text-xs font-medium text-empirika-orange">
+                      {content.badge2}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Parallax>
+        </Reveal>
       </Container>
     </section>
   );
