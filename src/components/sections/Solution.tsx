@@ -1,5 +1,6 @@
 import Container from "@/components/ui/Container";
 import Eyebrow from "@/components/ui/Eyebrow";
+import QuoteDivider from "@/components/ui/QuoteDivider";
 import Reveal from "@/components/ui/Reveal";
 import RevealText from "@/components/ui/RevealText";
 import SolutionScrollStepper from "@/components/sections/SolutionScrollStepper";
@@ -24,11 +25,10 @@ export default function Solution({ content }: { content: SolutionContent }) {
         </div>
 
         <Reveal delay={250}>
-          <p className="mx-auto mt-14 max-w-xl text-center text-lg font-medium leading-relaxed text-on-deep/80 sm:mt-16">
-            {content.closingLine1}
-            <br />
-            {content.closingLine2}
-          </p>
+          <QuoteDivider
+            quote={`${content.closingLine1} ${content.closingLine2}`}
+            className="mt-14 text-on-deep sm:mt-16"
+          />
         </Reveal>
       </Container>
     </section>

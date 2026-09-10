@@ -1,5 +1,6 @@
 import Container from "@/components/ui/Container";
 import Eyebrow from "@/components/ui/Eyebrow";
+import QuoteDivider from "@/components/ui/QuoteDivider";
 import Reveal from "@/components/ui/Reveal";
 import RevealText from "@/components/ui/RevealText";
 import type { ProblemContent } from "@/content/types";
@@ -41,15 +42,10 @@ export default function Problem({ content }: { content: ProblemContent }) {
         </Reveal>
 
         <Reveal delay={200}>
-          <div className="mx-auto mt-14 max-w-2xl text-center">
-            <p className="text-xl font-semibold leading-snug text-empirika-ink sm:text-2xl">
-              {content.closingLine1}
-              <br />
-              <span className="text-empirika-orange">
-                {content.closingLine2}
-              </span>
-            </p>
-          </div>
+          <QuoteDivider
+            quote={`${content.closingLine1} ${content.closingLine2}`}
+            className="mt-14 text-empirika-ink sm:mt-16"
+          />
         </Reveal>
       </Container>
     </section>

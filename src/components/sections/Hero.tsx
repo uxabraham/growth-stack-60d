@@ -2,6 +2,7 @@ import Image from "next/image";
 import Container from "@/components/ui/Container";
 import CtaButton from "@/components/ui/CtaButton";
 import Parallax from "@/components/ui/Parallax";
+import QuoteDivider from "@/components/ui/QuoteDivider";
 import Reveal from "@/components/ui/Reveal";
 import RevealText from "@/components/ui/RevealText";
 import StatInline from "@/components/ui/StatInline";
@@ -62,11 +63,10 @@ export default function Hero({
           </Reveal>
 
           <Reveal delay={280}>
-            <p className="mx-auto mt-5 max-w-xl text-sm font-medium text-on-deep/90 sm:mt-6 sm:text-lg">
-              {content.secondaryLine1}
-              <br />
-              {content.secondaryLine2}
-            </p>
+            <QuoteDivider
+              quote={`${content.secondaryLine1} ${content.secondaryLine2}`}
+              className="mt-5 text-on-deep sm:mt-6"
+            />
           </Reveal>
         </div>
 
