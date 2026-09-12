@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Figtree, Geist_Mono } from "next/font/google";
-import CustomCursor from "@/components/CustomCursor";
 import Preloader from "@/components/Preloader";
 import "./globals.css";
 
@@ -43,7 +42,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="min-h-full flex flex-col bg-white text-empirika-ink">
         <Preloader />
-        <CustomCursor />
         {children}
       </body>
     </html>

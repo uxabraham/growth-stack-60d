@@ -32,10 +32,7 @@ export default function WhatWeBuild({ content }: { content: WhatWeBuildContent }
           <div className="flex flex-col divide-y divide-black/10 border-t border-black/10">
             {content.items.map((item, i) => (
               <Reveal key={item.title} trackId={i === 0 ? "whatWeBuild" : undefined}>
-                <div
-                  data-cursor-hover
-                  className="group relative flex flex-col gap-3 rounded-2xl py-10 px-4 -mx-4 transition-colors duration-300 hover:bg-empirika-orange/[0.05] sm:flex-row sm:items-start sm:gap-8 sm:py-14"
-                >
+                <div className="group relative flex flex-col gap-3 rounded-2xl py-10 px-4 -mx-4 transition-colors duration-300 hover:bg-empirika-orange/[0.05] sm:flex-row sm:items-start sm:gap-8 sm:py-14">
                   <span
                     aria-hidden
                     className="absolute left-0 top-1/2 h-0 w-0.5 -translate-y-1/2 bg-empirika-orange transition-all duration-300 group-hover:h-[60%]"
