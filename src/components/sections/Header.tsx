@@ -9,7 +9,6 @@ import ThemeToggle from "@/components/ui/ThemeToggle";
 import type { BrandContent } from "@/content/types";
 
 const LINKS = [
-  { href: "#solucion", key: "navSolucion" as const },
   { href: "#metodologia", key: "navMetodologia" as const },
   { href: "#casos", key: "navCasos" as const },
   { href: "#inversion", key: "navInversion" as const },
