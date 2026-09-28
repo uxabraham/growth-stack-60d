@@ -40,8 +40,6 @@ export type ProblemContent = {
   titleLine2: string;
   paragraph: string;
   steps: ProblemStep[];
-  closingLine1: string;
-  closingLine2: string;
 };
 
 export type BuildItem = { title: string; desc: string };

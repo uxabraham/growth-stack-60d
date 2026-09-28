@@ -461,20 +461,6 @@ export default function ContentEditor() {
               />
             </div>
           </Field>
-          <Row>
-            <Field label="Cierre — línea 1">
-              <TextInput
-                value={content.problem.closingLine1}
-                onChange={(v) => update("problem", { ...content.problem, closingLine1: v })}
-              />
-            </Field>
-            <Field label="Cierre — línea 2">
-              <TextInput
-                value={content.problem.closingLine2}
-                onChange={(v) => update("problem", { ...content.problem, closingLine2: v })}
-              />
-            </Field>
-          </Row>
         </Card>
 
         <Card title="Qué construimos">

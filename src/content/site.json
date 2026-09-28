@@ -85,9 +85,7 @@
         "desc": "Las cotizaciones dependen de la memoria de alguien y las oportunidades se enfrían.",
         "flag": "Ventas que no avanzan"
       }
-    ],
-    "closingLine1": "Tienes piezas.",
-    "closingLine2": "Pero no tienes un sistema."
+    ]
   },
   "whatWeBuild": {
     "title": "Siete componentes. Un solo sistema.",
