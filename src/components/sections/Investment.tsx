@@ -22,6 +22,12 @@ export default function Investment({ content }: { content: InvestmentContent }) 
                 width={1148}
                 height={507}
                 className="absolute -right-10 top-1/2 hidden w-[720px] -translate-y-1/2 opacity-[0.16] lg:block xl:-right-4 xl:w-[860px]"
+                style={{
+                  maskImage:
+                    "linear-gradient(to right, transparent, black 40%)",
+                  WebkitMaskImage:
+                    "linear-gradient(to right, transparent, black 40%)",
+                }}
               />
               <div
                 className="absolute -right-24 top-1/2 h-[460px] w-[460px] -translate-y-1/2 rounded-full opacity-50 blur-[110px]"
