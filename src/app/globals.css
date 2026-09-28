@@ -37,6 +37,23 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
+/* Native anchor-link scrolling (replaces the old Lenis smooth-scroll
+   effect). scroll-margin-top keeps section headings clear of the fixed
+   header when jumping to a #section from the nav. */
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 96px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(28px);

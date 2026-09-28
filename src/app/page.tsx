@@ -1,5 +1,4 @@
 import { getSiteContent } from "@/lib/content";
-import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
 import BackToTop from "@/components/BackToTop";
 import Header from "@/components/sections/Header";
@@ -19,7 +18,7 @@ export default async function Home() {
   const content = await getSiteContent();
 
   return (
-    <SmoothScrollProvider>
+    <>
       <AnalyticsProvider />
       <Header brand={content.brand} />
       <main className="flex-1">
@@ -36,6 +35,6 @@ export default async function Home() {
       </main>
       <Footer brand={content.brand} />
       <BackToTop />
-    </SmoothScrollProvider>
+    </>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type Lenis from "lenis";
 
 export default function BackToTop() {
   const [visible, setVisible] = useState(false);
@@ -16,12 +15,7 @@ export default function BackToTop() {
   }, []);
 
   function scrollToTop() {
-    const lenis = (window as typeof window & { __lenis?: Lenis }).__lenis;
-    if (lenis) {
-      lenis.scrollTo(0);
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   return (
