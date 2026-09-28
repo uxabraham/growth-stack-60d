@@ -70,7 +70,7 @@ export default function MethodologyStepper({
                       : "text-base text-zinc-500 group-hover:text-zinc-700"
                   }`}
                 >
-                  {phase.title}
+                  {phase.leftTitle}
                 </span>
                 <span
                   className={`grid overflow-hidden text-sm leading-relaxed text-zinc-500 transition-all duration-500 ${

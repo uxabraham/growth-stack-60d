@@ -6,7 +6,6 @@ import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
 import WhatWeBuild from "@/components/sections/WhatWeBuild";
 import Methodology from "@/components/sections/Methodology";
-import FinalResult from "@/components/sections/FinalResult";
 import CasesAuthority from "@/components/sections/CasesAuthority";
 import ForWhoNot from "@/components/sections/ForWhoNot";
 import Investment from "@/components/sections/Investment";
@@ -26,7 +25,6 @@ export default async function Home() {
         <Problem content={content.problem} />
         <WhatWeBuild content={content.whatWeBuild} />
         <Methodology content={content.methodology} />
-        <FinalResult content={content.finalResult} />
         <CasesAuthority content={content.cases} />
         <ForWhoNot content={content.forWhoNot} />
         <Investment content={content.investment} />

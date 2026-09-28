@@ -19,14 +19,14 @@ export default function ForWhoNot({ content }: { content: ForWhoNotContent }) {
 
         <div className="mt-14 grid grid-cols-1 gap-6 sm:mt-16 sm:grid-cols-2">
           <Reveal trackId="forWhoNot">
-            <div className="h-full rounded-2xl border border-empirika-orange/30 bg-empirika-orange/[0.06] p-6 sm:p-8">
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-empirika-orange">
-                Para quién es
+            <div className="h-full rounded-2xl border border-emerald-500/30 bg-emerald-500/[0.06] p-6 sm:p-8">
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-emerald-400">
+                Esto SÍ es para ti si…
               </h3>
               <ul className="mt-5 space-y-4">
                 {content.yes.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-on-deep/85">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-empirika-orange text-xs font-bold text-white">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-xs font-bold text-white">
                       ✓
                     </span>
                     {item}
@@ -37,14 +37,14 @@ export default function ForWhoNot({ content }: { content: ForWhoNotContent }) {
           </Reveal>
 
           <Reveal delay={100}>
-            <div className="h-full rounded-2xl border border-on-deep/10 bg-on-deep/[0.02] p-6 sm:p-8">
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-on-deep/50">
-                No es para
+            <div className="h-full rounded-2xl border border-red-500/30 bg-red-500/[0.06] p-6 sm:p-8">
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-red-400">
+                Esto NO es para ti si…
               </h3>
               <ul className="mt-5 space-y-4">
                 {content.no.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-on-deep/60">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-on-deep/10 text-xs font-bold text-on-deep/50">
+                  <li key={item} className="flex items-start gap-3 text-sm text-on-deep/70">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/80 text-xs font-bold text-white">
                       ×
                     </span>
                     {item}

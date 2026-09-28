@@ -11,39 +11,42 @@
   },
   "hero": {
     "eyebrow": "Consultora de crecimiento digital",
-    "titleLine1": "Tu negocio ya funciona.",
-    "titleLine2": "Ahora construyamos el sistema para escalarlo.",
-    "paragraph": "Integramos estrategia, adquisición, publicidad, landing pages, CRM, automatización y seguimiento comercial en un solo sistema diseñado para generar nuevas oportunidades y convertirlas en crecimiento real.",
-    "secondaryLine1": "No hacemos marketing por partes.",
-    "secondaryLine2": "Construimos sistemas de crecimiento.",
+    "titleLine1": "Tu negocio ya vende.",
+    "titleLine2": "Ahora necesita un sistema capaz de hacerlo escalar.",
+    "paragraph": "Growth Stack 60D conecta adquisición, conversión y seguimiento comercial en una sola operación. En 60 días construimos la infraestructura que necesitas para generar oportunidades, darles seguimiento y saber qué está produciendo ventas.",
     "ctaLabel": "Solicitar evaluación",
     "ctaNote": "Evaluación estratégica sin costo. Solo para empresas calificadas.",
     "founderName": "Carlos Montes",
-    "founderRole": "CEO, Empirika Group",
-    "founderNote": "Operador de crecimiento, no gurú de marketing.",
-    "badge1": "⚡ Especializado en escalar negocios",
-    "badge2": "⚡ Casos de éxito comprobados",
+    "founderRole": "CEO - Empirika Group",
+    "founderNote": "Ha liderado estrategias de adquisición, automatización y conversión para empresas en crecimiento. Esa experiencia dio forma a Growth Stack 60D: un sistema que conecta marketing, seguimiento y ventas en una sola operación.",
     "stats": [
       {
-        "heading": "Marcas que ya construyeron su sistema",
-        "number": "500",
+        "heading": "años impulsando negocios",
+        "number": "10",
         "unit": "+",
-        "description": "Empresas de distintos rubros que dejaron de depender solo de referidos y hoy tienen un sistema propio de adquisición y conversión."
+        "description": ""
       },
       {
-        "heading": "Presencia en distintos mercados",
-        "number": "11",
-        "unit": "",
-        "description": "Operamos con clientes en múltiples países de LatAm, adaptando el sistema a cada mercado y su forma de comprar."
+        "heading": "proyectos culminados exitosamente",
+        "number": "400",
+        "unit": "+",
+        "description": ""
       },
       {
-        "heading": "Construyendo sistemas de crecimiento desde",
-        "number": "2018",
-        "unit": "",
-        "description": "Años de experiencia ayudando a negocios a escalar con procesos y datos, no con suerte ni con más esfuerzo."
+        "heading": "países con presencia digital",
+        "number": "10",
+        "unit": "+",
+        "description": ""
       }
     ],
-    "founderPhoto": "/team/carlos-montes.png"
+    "founderPhoto": "/team/carlos-montes.png",
+    "badges": [
+      "Campañas",
+      "Web",
+      "Conversión",
+      "CRM",
+      "Ventas"
+    ]
   },
   "vsl": {
     "title": "Antes de seguir, quiero explicarte algo.",
@@ -84,42 +87,6 @@
     "closingLine1": "Tienes piezas.",
     "closingLine2": "Pero no tienes un sistema."
   },
-  "solution": {
-    "titleLine1": "No necesitas más herramientas.",
-    "titleLine2": "Necesitas que todo trabaje conectado.",
-    "steps": [
-      {
-        "title": "Oferta",
-        "desc": "Definimos qué vendes, a quién y por qué deberían elegirte a ti antes que a cualquier otro."
-      },
-      {
-        "title": "Adquisición",
-        "desc": "Campañas y canales diseñados para traer oportunidades calificadas, no solo tráfico."
-      },
-      {
-        "title": "Conversión",
-        "desc": "Landing y funnel construidos para convertir visitas en conversaciones reales de venta."
-      },
-      {
-        "title": "CRM",
-        "desc": "Cada oportunidad centralizada en un solo lugar, sin que nada se pierda en WhatsApp o Excel."
-      },
-      {
-        "title": "Seguimiento",
-        "desc": "Automatizaciones que responden antes de que la oportunidad se enfríe por falta de tiempo."
-      },
-      {
-        "title": "Ventas",
-        "desc": "Proceso comercial definido por etapas, con ritmo y consistencia para cerrar."
-      },
-      {
-        "title": "Data",
-        "desc": "Visibilidad completa de qué funciona, qué no, y en qué invertir el siguiente dólar."
-      }
-    ],
-    "closingLine1": "No instalamos herramientas porque sí.",
-    "closingLine2": "Cada componente tiene una función dentro del sistema."
-  },
   "whatWeBuild": {
     "title": "Siete componentes. Un solo sistema.",
     "items": [
@@ -156,77 +123,55 @@
     "closingLine2": "Es un solo sistema."
   },
   "methodology": {
-    "title": "60 días. Una implementación, no un curso.",
+    "title": "60 días para construir, activar y optimizar el sistema.",
     "phases": [
       {
         "phase": "Fase 1",
         "days": "Días 1–15",
         "title": "Diagnóstico y estrategia",
-        "desc": "Auditamos tu operación actual, tu oferta y tu data. Definimos el plan del sistema completo.",
+        "desc": "Entendemos cómo vendes, a quién le vendes y qué te está frenando, antes de mover una sola pieza del sistema.",
         "bullets": [
           "Auditoría de marketing, ventas y data actual",
           "Definición de oferta y propuesta de valor",
           "Mapa del sistema completo a construir"
-        ]
+        ],
+        "leftTitle": "Partimos de tu negocio real, no de una plantilla"
       },
       {
         "phase": "Fase 2",
         "days": "Días 16–30",
         "title": "Construcción",
-        "desc": "Montamos landing, CRM, automatizaciones y estructura de campañas. La base del sistema.",
+        "desc": "Cada pieza —de la landing al CRM— queda conectada entre sí desde el día uno, sin depender de procesos manuales.",
         "bullets": [
           "Landing y funnel de conversión",
           "CRM configurado y conectado",
           "Automatizaciones de seguimiento"
-        ]
+        ],
+        "leftTitle": "Se arma la infraestructura que hoy no tienes"
       },
       {
         "phase": "Fase 3",
         "days": "Días 31–45",
         "title": "Lanzamiento",
-        "desc": "Activamos adquisición en vivo. El sistema empieza a generar oportunidades reales.",
+        "desc": "Encendemos la adquisición con el proceso comercial ya listo para recibir y dar seguimiento a cada oportunidad.",
         "bullets": [
           "Campañas de adquisición activas",
           "Proceso comercial en marcha",
           "Primeras oportunidades entrando al CRM"
-        ]
+        ],
+        "leftTitle": "El sistema empieza a trabajar por ti"
       },
       {
         "phase": "Fase 4",
         "days": "Días 46–60",
         "title": "Optimización",
-        "desc": "Ajustamos con datos reales: oferta, mensajes, segmentación y proceso comercial.",
+        "desc": "Usamos los primeros resultados reales para ajustar oferta, mensajes y proceso, dejando un sistema listo para escalar.",
         "bullets": [
           "Ajustes basados en data real",
           "Optimización de mensajes y segmentación",
           "Growth Engine listo para escalar"
-        ]
-      }
-    ]
-  },
-  "finalResult": {
-    "titleLine1": "El día 60 no deberías tener otra campaña.",
-    "titleLine2": "Deberías tener un Growth Engine funcionando.",
-    "modules": [
-      {
-        "label": "Funnel",
-        "metric": "Activo"
-      },
-      {
-        "label": "CRM",
-        "metric": "Actualizado"
-      },
-      {
-        "label": "Automatizaciones",
-        "metric": "Corriendo"
-      },
-      {
-        "label": "Dashboard",
-        "metric": "En vivo"
-      },
-      {
-        "label": "Data",
-        "metric": "Centralizada"
+        ],
+        "leftTitle": "Afinamos con datos, no con suposiciones"
       }
     ]
   },
@@ -275,7 +220,7 @@
     ]
   },
   "forWhoNot": {
-    "title": "Para quién es. Para quién no.",
+    "title": "Growth Stack funciona cuando existe algo para escalar",
     "yes": [
       "Empresas con producto o servicio validado.",
       "Empresas con ventas actuales.",

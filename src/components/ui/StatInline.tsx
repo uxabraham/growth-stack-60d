@@ -52,12 +52,12 @@ export default function StatInline({
   return (
     <div ref={ref} className="px-3 text-center first:pl-0 last:pr-0 sm:text-left">
       <p className="tabular-nums leading-none text-on-deep">
-        <span className="text-2xl font-bold sm:text-3xl">{count.toLocaleString("es")}</span>
         {stat.unit && (
           <span className="text-2xl font-bold text-empirika-orange sm:text-3xl">
             {stat.unit}
           </span>
         )}
+        <span className="text-2xl font-bold sm:text-3xl">{count.toLocaleString("es")}</span>
       </p>
       <p className="mt-1.5 text-[10px] font-medium uppercase leading-snug tracking-wide text-on-deep/40 sm:text-[11px]">
         {stat.heading}

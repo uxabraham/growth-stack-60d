@@ -253,20 +253,6 @@ export default function ContentEditor() {
             />
           </Field>
           <Row>
-            <Field label="Mensaje secundario — línea 1">
-              <TextInput
-                value={content.hero.secondaryLine1}
-                onChange={(v) => update("hero", { ...content.hero, secondaryLine1: v })}
-              />
-            </Field>
-            <Field label="Mensaje secundario — línea 2">
-              <TextInput
-                value={content.hero.secondaryLine2}
-                onChange={(v) => update("hero", { ...content.hero, secondaryLine2: v })}
-              />
-            </Field>
-          </Row>
-          <Row>
             <Field label="Texto del CTA">
               <TextInput
                 value={content.hero.ctaLabel}
@@ -295,7 +281,7 @@ export default function ContentEditor() {
             </Field>
           </Row>
           <Field label="Nota del fundador">
-            <TextInput
+            <TextArea
               value={content.hero.founderNote}
               onChange={(v) => update("hero", { ...content.hero, founderNote: v })}
             />
@@ -308,20 +294,12 @@ export default function ContentEditor() {
               hint="Se muestra en el bloque debajo del video, al lado de los números."
             />
           </Field>
-          <Row>
-            <Field label="Badge 1">
-              <TextInput
-                value={content.hero.badge1}
-                onChange={(v) => update("hero", { ...content.hero, badge1: v })}
-              />
-            </Field>
-            <Field label="Badge 2">
-              <TextInput
-                value={content.hero.badge2}
-                onChange={(v) => update("hero", { ...content.hero, badge2: v })}
-              />
-            </Field>
-          </Row>
+          <Field label="Etiquetas (badges debajo de los números)">
+            <StringListEditor
+              items={content.hero.badges}
+              onChange={(badges) => update("hero", { ...content.hero, badges })}
+            />
+          </Field>
           <Field label="Bloque de números (estilo bento, con conteo animado)">
             <StatCardListEditor
               stats={content.hero.stats}
@@ -443,85 +421,6 @@ export default function ContentEditor() {
           </Row>
         </Card>
 
-        <Card title="La solución">
-          <Row>
-            <Field label="Título — línea 1">
-              <TextInput
-                value={content.solution.titleLine1}
-                onChange={(v) => update("solution", { ...content.solution, titleLine1: v })}
-              />
-            </Field>
-            <Field label="Título — línea 2">
-              <TextInput
-                value={content.solution.titleLine2}
-                onChange={(v) => update("solution", { ...content.solution, titleLine2: v })}
-              />
-            </Field>
-          </Row>
-          <Field label="Pasos del sistema (scroll interactivo)">
-            <div className="space-y-3">
-              {content.solution.steps.map((step, i) => (
-                <div key={i} className="space-y-2 rounded-lg border border-white/10 p-3">
-                  <div className="flex items-center gap-2">
-                    <input
-                      value={step.title}
-                      onChange={(e) => {
-                        const next = [...content.solution.steps];
-                        next[i] = { ...next[i], title: e.target.value };
-                        update("solution", { ...content.solution, steps: next });
-                      }}
-                      placeholder="Título del paso"
-                      className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange"
-                    />
-                    <RemoveButton
-                      onClick={() =>
-                        update("solution", {
-                          ...content.solution,
-                          steps: content.solution.steps.filter((_, idx) => idx !== i),
-                        })
-                      }
-                    />
-                  </div>
-                  <textarea
-                    value={step.desc}
-                    onChange={(e) => {
-                      const next = [...content.solution.steps];
-                      next[i] = { ...next[i], desc: e.target.value };
-                      update("solution", { ...content.solution, steps: next });
-                    }}
-                    rows={2}
-                    placeholder="Descripción que se muestra en el panel al llegar a este paso"
-                    className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange"
-                  />
-                </div>
-              ))}
-              <AddButton
-                label="Agregar paso"
-                onClick={() =>
-                  update("solution", {
-                    ...content.solution,
-                    steps: [...content.solution.steps, { title: "", desc: "" }],
-                  })
-                }
-              />
-            </div>
-          </Field>
-          <Row>
-            <Field label="Cierre — línea 1">
-              <TextInput
-                value={content.solution.closingLine1}
-                onChange={(v) => update("solution", { ...content.solution, closingLine1: v })}
-              />
-            </Field>
-            <Field label="Cierre — línea 2">
-              <TextInput
-                value={content.solution.closingLine2}
-                onChange={(v) => update("solution", { ...content.solution, closingLine2: v })}
-              />
-            </Field>
-          </Row>
-        </Card>
-
         <Card title="Qué construimos">
           <Field label="Título">
             <TextInput
@@ -626,25 +525,35 @@ export default function ContentEditor() {
                   />
                 </div>
                 <input
-                  value={phase.title}
+                  value={phase.leftTitle}
                   onChange={(e) => {
                     const next = [...content.methodology.phases];
-                    next[i] = { ...next[i], title: e.target.value };
+                    next[i] = { ...next[i], leftTitle: e.target.value };
                     update("methodology", { ...content.methodology, phases: next });
                   }}
-                  placeholder="Título"
+                  placeholder="Título (lista de la izquierda)"
+                  className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange"
+                />
+                <textarea
+                  value={phase.desc}
+                  onChange={(e) => {
+                    const next = [...content.methodology.phases];
+                    next[i] = { ...next[i], desc: e.target.value };
+                    update("methodology", { ...content.methodology, phases: next });
+                  }}
+                  rows={2}
+                  placeholder="Descripción (lista de la izquierda)"
                   className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange"
                 />
                 <div className="flex items-start gap-2">
-                  <textarea
-                    value={phase.desc}
+                  <input
+                    value={phase.title}
                     onChange={(e) => {
                       const next = [...content.methodology.phases];
-                      next[i] = { ...next[i], desc: e.target.value };
+                      next[i] = { ...next[i], title: e.target.value };
                       update("methodology", { ...content.methodology, phases: next });
                     }}
-                    rows={2}
-                    placeholder="Descripción"
+                    placeholder="Título (panel oscuro de la derecha)"
                     className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange"
                   />
                   <RemoveButton
@@ -679,74 +588,12 @@ export default function ContentEditor() {
                   ...content.methodology,
                   phases: [
                     ...content.methodology.phases,
-                    { phase: "", days: "", title: "", desc: "", bullets: [] },
+                    { phase: "", days: "", title: "", leftTitle: "", desc: "", bullets: [] },
                   ],
                 })
               }
             />
           </div>
-        </Card>
-
-        <Card title="Resultado final">
-          <Row>
-            <Field label="Título — línea 1">
-              <TextInput
-                value={content.finalResult.titleLine1}
-                onChange={(v) => update("finalResult", { ...content.finalResult, titleLine1: v })}
-              />
-            </Field>
-            <Field label="Título — línea 2">
-              <TextInput
-                value={content.finalResult.titleLine2}
-                onChange={(v) => update("finalResult", { ...content.finalResult, titleLine2: v })}
-              />
-            </Field>
-          </Row>
-          <Field label="Módulos del Growth Engine">
-            <div className="space-y-2">
-              {content.finalResult.modules.map((m, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <input
-                    value={m.label}
-                    onChange={(e) => {
-                      const next = [...content.finalResult.modules];
-                      next[i] = { ...next[i], label: e.target.value };
-                      update("finalResult", { ...content.finalResult, modules: next });
-                    }}
-                    placeholder="Módulo"
-                    className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange"
-                  />
-                  <input
-                    value={m.metric}
-                    onChange={(e) => {
-                      const next = [...content.finalResult.modules];
-                      next[i] = { ...next[i], metric: e.target.value };
-                      update("finalResult", { ...content.finalResult, modules: next });
-                    }}
-                    placeholder="Estado"
-                    className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange"
-                  />
-                  <RemoveButton
-                    onClick={() =>
-                      update("finalResult", {
-                        ...content.finalResult,
-                        modules: content.finalResult.modules.filter((_, idx) => idx !== i),
-                      })
-                    }
-                  />
-                </div>
-              ))}
-              <AddButton
-                label="Agregar módulo"
-                onClick={() =>
-                  update("finalResult", {
-                    ...content.finalResult,
-                    modules: [...content.finalResult.modules, { label: "", metric: "" }],
-                  })
-                }
-              />
-            </div>
-          </Field>
         </Card>
 
         <Card title="Casos y autoridad">

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Container from "@/components/ui/Container";
 import CtaButton from "@/components/ui/CtaButton";
 import Parallax from "@/components/ui/Parallax";
-import QuoteDivider from "@/components/ui/QuoteDivider";
 import Reveal from "@/components/ui/Reveal";
 import RevealText from "@/components/ui/RevealText";
 import StatInline from "@/components/ui/StatInline";
@@ -60,13 +59,6 @@ export default function Hero({
             <p className="mx-auto mt-7 max-w-2xl text-balance text-base leading-relaxed text-on-deep/70 sm:mt-8 sm:text-xl">
               {content.paragraph}
             </p>
-          </Reveal>
-
-          <Reveal delay={280}>
-            <QuoteDivider
-              quote={`${content.secondaryLine1} ${content.secondaryLine2}`}
-              className="mt-5 text-on-deep sm:mt-6"
-            />
           </Reveal>
         </div>
 
@@ -164,7 +156,7 @@ export default function Hero({
                     <p className="mt-1 text-sm font-medium text-empirika-orange">
                       {content.founderRole}
                     </p>
-                    <p className="mt-3 max-w-md text-sm leading-relaxed text-on-deep/60">
+                    <p className="mt-3 max-w-lg text-sm leading-relaxed text-on-deep/60">
                       {content.founderNote}
                     </p>
                   </div>
@@ -176,12 +168,14 @@ export default function Hero({
                   </div>
 
                   <div className="flex flex-wrap gap-2">
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-empirika-orange/30 bg-empirika-orange/10 px-3 py-1.5 text-xs font-medium text-empirika-orange">
-                      {content.badge1}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-empirika-orange/30 bg-empirika-orange/10 px-3 py-1.5 text-xs font-medium text-empirika-orange">
-                      {content.badge2}
-                    </span>
+                    {content.badges.map((badge) => (
+                      <span
+                        key={badge}
+                        className="inline-flex items-center gap-1.5 rounded-full border border-empirika-orange/30 bg-empirika-orange/10 px-3 py-1.5 text-xs font-medium text-empirika-orange"
+                      >
+                        {badge}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>

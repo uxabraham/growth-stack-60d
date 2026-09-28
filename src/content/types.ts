@@ -10,16 +10,13 @@ export type HeroContent = {
   titleLine1: string;
   titleLine2: string;
   paragraph: string;
-  secondaryLine1: string;
-  secondaryLine2: string;
   ctaLabel: string;
   ctaNote: string;
   founderName: string;
   founderRole: string;
   founderNote: string;
   founderPhoto: string;
-  badge1: string;
-  badge2: string;
+  badges: string[];
   stats: StatCard[];
 };
 
@@ -40,15 +37,6 @@ export type ProblemContent = {
   closingLine2: string;
 };
 
-export type SolutionStep = { title: string; desc: string };
-export type SolutionContent = {
-  titleLine1: string;
-  titleLine2: string;
-  steps: SolutionStep[];
-  closingLine1: string;
-  closingLine2: string;
-};
-
 export type BuildItem = { title: string; desc: string };
 export type WhatWeBuildContent = {
   title: string;
@@ -61,18 +49,13 @@ export type MethodologyPhase = {
   phase: string;
   days: string;
   title: string;
+  leftTitle: string;
   desc: string;
   bullets: string[];
 };
 export type MethodologyContent = {
   title: string;
   phases: MethodologyPhase[];
-};
-
-export type FinalResultContent = {
-  titleLine1: string;
-  titleLine2: string;
-  modules: { label: string; metric: string }[];
 };
 
 export type CaseItem = {
@@ -136,10 +119,8 @@ export type SiteContent = {
   hero: HeroContent;
   vsl: VslContent;
   problem: ProblemContent;
-  solution: SolutionContent;
   whatWeBuild: WhatWeBuildContent;
   methodology: MethodologyContent;
-  finalResult: FinalResultContent;
   cases: CasesContent;
   forWhoNot: ForWhoNotContent;
   investment: InvestmentContent;
