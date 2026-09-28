@@ -106,9 +106,8 @@ export default function MethodologyStepper({
             <h3 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
               {current.title}
             </h3>
-            <p className="mt-1.5 text-sm text-white/50">{current.days}</p>
 
-            <ul className="mt-7 space-y-3.5">
+            <ul className="mt-6 space-y-3.5">
               {(current.bullets ?? []).map((bullet, i) => (
                 <li
                   key={bullet}

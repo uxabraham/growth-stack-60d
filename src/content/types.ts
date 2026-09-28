@@ -9,7 +9,8 @@ export type HeroContent = {
   eyebrow: string;
   titleLine1: string;
   titleLine2: string;
-  paragraph: string;
+  paragraphLine1: string;
+  paragraphLine2: string;
   ctaLabel: string;
   ctaNote: string;
   founderName: string;
@@ -30,7 +31,6 @@ export type VslContent = {
 
 export type ProblemStep = {
   title: string;
-  tag: string;
   desc: string;
   flag: string;
 };

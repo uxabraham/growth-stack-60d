@@ -37,8 +37,8 @@ export default function Hero({
         }}
       />
 
-      <Container className="relative">
-        <div className="mx-auto max-w-4xl text-center">
+      <Container className="relative max-w-7xl">
+        <div className="mx-auto max-w-none text-center">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-on-deep/50">
               {content.eyebrow}
@@ -56,8 +56,9 @@ export default function Hero({
           </h1>
 
           <Reveal delay={200}>
-            <p className="mx-auto mt-7 max-w-2xl text-balance text-base leading-relaxed text-on-deep/70 sm:mt-8 sm:text-xl">
-              {content.paragraph}
+            <p className="mx-auto mt-7 max-w-none text-base leading-relaxed text-on-deep/70 sm:mt-8 sm:text-lg lg:text-[1.0625rem] xl:text-lg">
+              <span className="block">{content.paragraphLine1}</span>
+              <span className="block">{content.paragraphLine2}</span>
             </p>
           </Reveal>
         </div>

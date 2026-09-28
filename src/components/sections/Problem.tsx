@@ -64,9 +64,6 @@ export default function Problem({ content }: { content: ProblemContent }) {
                 <h3 className="mt-5 text-xl font-semibold tracking-tight text-empirika-ink sm:text-2xl">
                   {step.title}
                 </h3>
-                <p className="mt-1.5 text-xs font-semibold uppercase tracking-wide text-zinc-400">
-                  {step.tag}
-                </p>
                 <p className="mt-3 text-sm leading-relaxed text-zinc-600">
                   {step.desc}
                 </p>

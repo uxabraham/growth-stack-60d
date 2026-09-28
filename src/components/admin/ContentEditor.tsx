@@ -267,10 +267,16 @@ export default function ContentEditor() {
               />
             </Field>
           </Row>
-          <Field label="Párrafo">
+          <Field label="Párrafo — línea 1">
             <TextArea
-              value={content.hero.paragraph}
-              onChange={(v) => update("hero", { ...content.hero, paragraph: v })}
+              value={content.hero.paragraphLine1}
+              onChange={(v) => update("hero", { ...content.hero, paragraphLine1: v })}
+            />
+          </Field>
+          <Field label="Párrafo — línea 2">
+            <TextArea
+              value={content.hero.paragraphLine2}
+              onChange={(v) => update("hero", { ...content.hero, paragraphLine2: v })}
             />
           </Field>
           <Row>
@@ -417,16 +423,6 @@ export default function ContentEditor() {
                       }
                     />
                   </div>
-                  <input
-                    value={step.tag}
-                    onChange={(e) => {
-                      const next = [...content.problem.steps];
-                      next[i] = { ...next[i], tag: e.target.value };
-                      update("problem", { ...content.problem, steps: next });
-                    }}
-                    placeholder="Categoría (ej. Publicidad · contenido)"
-                    className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange"
-                  />
                   <textarea
                     value={step.desc}
                     onChange={(e) => {
@@ -455,7 +451,7 @@ export default function ContentEditor() {
                 onClick={() =>
                   update("problem", {
                     ...content.problem,
-                    steps: [...content.problem.steps, { title: "", tag: "", desc: "", flag: "" }],
+                    steps: [...content.problem.steps, { title: "", desc: "", flag: "" }],
                   })
                 }
               />
