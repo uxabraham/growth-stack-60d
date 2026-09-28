@@ -37,8 +37,8 @@ export default function WhatWeBuild({ content }: { content: WhatWeBuildContent }
                     aria-hidden
                     className="absolute left-0 top-1/2 h-0 w-0.5 -translate-y-1/2 bg-empirika-orange transition-all duration-300 group-hover:h-[60%]"
                   />
-                  <span className="font-mono text-sm text-empirika-orange transition-transform duration-300 group-hover:translate-x-1 sm:w-16 sm:shrink-0">
-                    ({String(i + 1).padStart(2, "0")})
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-empirika-ink text-2xl font-bold text-white transition-transform duration-300 group-hover:translate-x-1 sm:h-16 sm:w-16 sm:text-3xl">
+                    {i + 1}
                   </span>
                   <div className="transition-transform duration-300 group-hover:translate-x-1">
                     <h3 className="text-xl font-semibold text-empirika-ink sm:text-2xl">
