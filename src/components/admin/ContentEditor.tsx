@@ -6,6 +6,20 @@ import { Card, Row, Field, TextInput, TextArea, StringListEditor, StatCardListEd
 
 const DRAFT_KEY = "gs60d_admin_draft_v2";
 
+const SECTIONS = [
+  { id: "marca", label: "Marca" },
+  { id: "hero", label: "Hero" },
+  { id: "video", label: "Video" },
+  { id: "problema", label: "El problema" },
+  { id: "que-construimos", label: "Qué construimos" },
+  { id: "metodologia", label: "Metodología" },
+  { id: "casos", label: "Casos" },
+  { id: "filtro", label: "El filtro" },
+  { id: "inversion", label: "Inversión" },
+  { id: "faq", label: "FAQ" },
+  { id: "cta-final", label: "CTA final" },
+] as const;
+
 type SaveState = "idle" | "saving" | "saved" | "error";
 
 export default function ContentEditor() {
@@ -210,10 +224,26 @@ export default function ContentEditor() {
             </div>
           </div>
         )}
+        <nav className="mt-4 flex flex-wrap gap-1.5 border-t border-white/10 pt-3">
+          {SECTIONS.map((s) => (
+            <a
+              key={s.id}
+              href={`#${s.id}`}
+              className="rounded-full px-3 py-1 text-xs font-medium text-white/50 transition-colors hover:bg-white/10 hover:text-white"
+            >
+              {s.label}
+            </a>
+          ))}
+        </nav>
       </div>
 
       <div className="space-y-6">
-        <Card title="Marca y navegación" subtitle="Header y footer del sitio">
+        <Card
+          id="marca"
+          title="Marca y navegación"
+          subtitle="Header y footer del sitio"
+          tone="dark"
+        >
           <Row>
             <Field label="Nombre de marca">
               <TextInput
@@ -244,9 +274,28 @@ export default function ContentEditor() {
               />
             </Field>
           </Row>
+          <Field label="Enlaces del menú">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+              <TextInput
+                value={content.brand.navMetodologia}
+                onChange={(v) => update("brand", { ...content.brand, navMetodologia: v })}
+                placeholder="Metodología"
+              />
+              <TextInput
+                value={content.brand.navCasos}
+                onChange={(v) => update("brand", { ...content.brand, navCasos: v })}
+                placeholder="Casos"
+              />
+              <TextInput
+                value={content.brand.navInversion}
+                onChange={(v) => update("brand", { ...content.brand, navInversion: v })}
+                placeholder="Inversión"
+              />
+            </div>
+          </Field>
         </Card>
 
-        <Card title="Hero" subtitle="Primera sección visible">
+        <Card id="hero" title="Hero" subtitle="Primera sección visible" tone="dark" anchor="#hero">
           <Field label="Eyebrow">
             <TextInput
               value={content.hero.eyebrow}
@@ -335,7 +384,7 @@ export default function ContentEditor() {
           </Field>
         </Card>
 
-        <Card title="Video (VSL)">
+        <Card id="video" title="Video (VSL)" tone="dark" anchor="#hero">
           <Field label="Video del Hero">
             <VideoUpload
               slot="hero-vsl"
@@ -372,7 +421,7 @@ export default function ContentEditor() {
           </Row>
         </Card>
 
-        <Card title="El problema">
+        <Card id="problema" title="El problema" anchor="#problema">
           <Field label="Eyebrow">
             <TextInput
               value={content.problem.eyebrow}
@@ -459,7 +508,7 @@ export default function ContentEditor() {
           </Field>
         </Card>
 
-        <Card title="Qué construimos">
+        <Card id="que-construimos" title="Qué construimos" anchor="#que-construimos">
           <Field label="Título">
             <TextInput
               value={content.whatWeBuild.title}
@@ -530,7 +579,7 @@ export default function ContentEditor() {
           </Row>
         </Card>
 
-        <Card title="Metodología 60 días">
+        <Card id="metodologia" title="Metodología 60 días" anchor="#metodologia">
           <Field label="Título">
             <TextInput
               value={content.methodology.title}
@@ -634,7 +683,7 @@ export default function ContentEditor() {
           </div>
         </Card>
 
-        <Card title="Casos y autoridad">
+        <Card id="casos" title="Casos y autoridad" anchor="#casos">
           <Field label="Título">
             <TextInput
               value={content.cases.title}
@@ -710,7 +759,7 @@ export default function ContentEditor() {
           </div>
         </Card>
 
-        <Card title="Para quién es / no es">
+        <Card id="filtro" title="Para quién es / no es" tone="dark" anchor="#filtro">
           <Field label="Título">
             <TextInput
               value={content.forWhoNot.title}
@@ -733,7 +782,7 @@ export default function ContentEditor() {
           </Row>
         </Card>
 
-        <Card title="Inversión">
+        <Card id="inversion" title="Inversión" anchor="#inversion">
           <Field label="Título">
             <TextInput
               value={content.investment.title}
@@ -774,7 +823,7 @@ export default function ContentEditor() {
           </Field>
         </Card>
 
-        <Card title="Preguntas frecuentes">
+        <Card id="faq" title="Preguntas frecuentes" tone="dark" anchor="#faq">
           <Field label="Título">
             <TextInput
               value={content.faq.title}
@@ -829,7 +878,7 @@ export default function ContentEditor() {
           </div>
         </Card>
 
-        <Card title="CTA final">
+        <Card id="cta-final" title="CTA final" tone="dark" anchor="#evaluacion">
           <Row>
             <Field label="Título — línea 1">
               <TextInput

@@ -5,18 +5,50 @@ import Image from "next/image";
 import type { StatCard } from "@/content/types";
 
 export function Card({
+  id,
   title,
   subtitle,
+  tone = "light",
+  anchor,
   children,
 }: {
+  id?: string;
   title: string;
   subtitle?: string;
+  tone?: "light" | "dark";
+  anchor?: string;
   children: ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-      <h2 className="text-base font-semibold text-white">{title}</h2>
-      {subtitle && <p className="mt-1 text-sm text-white/50">{subtitle}</p>}
+    <div
+      id={id}
+      className="scroll-mt-28 rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+    >
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div className="flex items-center gap-2.5">
+          <span
+            aria-hidden
+            className={`h-2.5 w-2.5 shrink-0 rounded-full ${
+              tone === "dark" ? "bg-empirika-ink ring-1 ring-white/30" : "bg-white"
+            }`}
+            title={tone === "dark" ? "Sección oscura del sitio" : "Sección clara del sitio"}
+          />
+          <div>
+            <h2 className="text-base font-semibold text-white">{title}</h2>
+            {subtitle && <p className="mt-0.5 text-sm text-white/50">{subtitle}</p>}
+          </div>
+        </div>
+        {anchor && (
+          <a
+            href={`/${anchor}`}
+            target="_blank"
+            rel="noreferrer"
+            className="shrink-0 rounded-full border border-white/15 px-3 py-1.5 text-xs font-medium text-white/60 transition-colors hover:border-empirika-orange/50 hover:text-empirika-orange"
+          >
+            Ver en el sitio ↗
+          </a>
+        )}
+      </div>
       <div className="mt-5 space-y-5">{children}</div>
     </div>
   );
