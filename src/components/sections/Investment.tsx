@@ -21,7 +21,7 @@ export default function Investment({ content }: { content: InvestmentContent }) 
                 alt=""
                 width={1148}
                 height={507}
-                className="absolute -right-10 top-1/2 hidden w-[720px] -translate-y-1/2 opacity-[0.55] lg:block xl:-right-4 xl:w-[860px]"
+                className="absolute -right-10 top-1/2 hidden w-[720px] -translate-y-1/2 opacity-20 lg:block xl:-right-4 xl:w-[860px]"
                 style={{
                   maskImage:
                     "linear-gradient(to right, transparent 0%, black 70%)",
@@ -64,7 +64,7 @@ export default function Investment({ content }: { content: InvestmentContent }) 
                 </div>
 
                 <div className="flex max-w-sm flex-col items-start gap-5 lg:items-end lg:text-right">
-                  <p className="text-xs leading-relaxed text-zinc-400">
+                  <p className="text-xs leading-relaxed text-empirika-ink">
                     {content.disclaimer}
                   </p>
                   <CtaButton
