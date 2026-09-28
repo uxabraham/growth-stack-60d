@@ -14,6 +14,14 @@ export default function Hero({
   content: HeroContent;
   vsl: VslContent;
 }) {
+  const splitIndex = content.titleLine2.indexOf("capaz");
+  const titleLine2Part1 =
+    splitIndex === -1
+      ? content.titleLine2
+      : content.titleLine2.slice(0, splitIndex).trim();
+  const titleLine2Part2 =
+    splitIndex === -1 ? "" : content.titleLine2.slice(splitIndex).trim();
+
   return (
     <section
       id="hero"
@@ -50,9 +58,17 @@ export default function Hero({
             <RevealText
               as="span"
               className="block text-empirika-orange"
-              text={content.titleLine2}
+              text={titleLine2Part1}
               wordDelay={40}
             />
+            {titleLine2Part2 && (
+              <RevealText
+                as="span"
+                className="block text-empirika-orange"
+                text={titleLine2Part2}
+                wordDelay={40}
+              />
+            )}
           </h1>
 
           <Reveal delay={200}>
