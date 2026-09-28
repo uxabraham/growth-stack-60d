@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import type { SiteContent } from "@/content/types";
 import { Card, Row, Field, TextInput, TextArea, StringListEditor, StatCardListEditor, AddButton, RemoveButton, ImageUpload, VideoUpload } from "@/components/admin/fields";
 
-const DRAFT_KEY = "gs60d_admin_draft_v1";
+const DRAFT_KEY = "gs60d_admin_draft_v2";
 
 type SaveState = "idle" | "saving" | "saved" | "error";
 
@@ -28,14 +28,17 @@ export default function ContentEditor() {
           return;
         }
         setServerContent(data.content);
+        // Always start from the real, currently-published content — never
+        // auto-apply a leftover local draft on top of it. A stale draft
+        // silently overwriting fresh server content (e.g. from someone
+        // else's edits) is exactly how content regresses without anyone
+        // noticing; restoring a draft is a deliberate action below instead.
+        setContent(data.content);
 
         const draftRaw =
           typeof window !== "undefined" ? localStorage.getItem(DRAFT_KEY) : null;
         if (draftRaw) {
           setHasDraft(true);
-          setContent(JSON.parse(draftRaw));
-        } else {
-          setContent(data.content);
         }
       } catch {
         setError("Error de conexión al cargar el contenido.");
@@ -68,7 +71,16 @@ export default function ContentEditor() {
   function discardDraft() {
     localStorage.removeItem(DRAFT_KEY);
     setHasDraft(false);
-    if (serverContent) setContent(serverContent);
+  }
+
+  function restoreDraft() {
+    const draftRaw = localStorage.getItem(DRAFT_KEY);
+    if (!draftRaw) return;
+    try {
+      setContent(JSON.parse(draftRaw));
+    } catch {
+      setSaveMessage("El borrador guardado está dañado y no se pudo cargar.");
+    }
   }
 
   async function saveToProject() {
@@ -175,18 +187,27 @@ export default function ContentEditor() {
           </p>
         )}
         {hasDraft && (
-          <div className="mt-3 flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5">
-            <p className="text-xs text-white/50">
-              Estás viendo un borrador guardado en este navegador, distinto al
-              contenido publicado.
+          <div className="mt-3 flex flex-wrap items-center gap-3 rounded-lg border border-amber-400/20 bg-amber-400/[0.06] px-4 py-2.5">
+            <p className="text-xs text-amber-200/80">
+              Hay un borrador sin guardar de este navegador (puede ser viejo).
+              Estás viendo el contenido publicado ahora mismo.
             </p>
-            <button
-              type="button"
-              onClick={discardDraft}
-              className="shrink-0 text-xs font-semibold text-white/70 underline underline-offset-2 hover:text-white"
-            >
-              Descartar borrador
-            </button>
+            <div className="flex shrink-0 gap-3">
+              <button
+                type="button"
+                onClick={restoreDraft}
+                className="text-xs font-semibold text-amber-200 underline underline-offset-2 hover:text-white"
+              >
+                Ver borrador
+              </button>
+              <button
+                type="button"
+                onClick={discardDraft}
+                className="text-xs font-semibold text-white/50 underline underline-offset-2 hover:text-white"
+              >
+                Descartar
+              </button>
+            </div>
           </div>
         )}
       </div>
@@ -346,6 +367,12 @@ export default function ContentEditor() {
         </Card>
 
         <Card title="El problema">
+          <Field label="Eyebrow">
+            <TextInput
+              value={content.problem.eyebrow}
+              onChange={(v) => update("problem", { ...content.problem, eyebrow: v })}
+            />
+          </Field>
           <Row>
             <Field label="Título — línea 1">
               <TextInput
@@ -353,53 +380,82 @@ export default function ContentEditor() {
                 onChange={(v) => update("problem", { ...content.problem, titleLine1: v })}
               />
             </Field>
-            <Field label="Título — línea 2">
+            <Field label="Título — línea 2 (naranja)">
               <TextInput
                 value={content.problem.titleLine2}
                 onChange={(v) => update("problem", { ...content.problem, titleLine2: v })}
               />
             </Field>
           </Row>
-          <Field label="Piezas desconectadas">
+          <Field label="Párrafo">
+            <TextArea
+              value={content.problem.paragraph}
+              onChange={(v) => update("problem", { ...content.problem, paragraph: v })}
+            />
+          </Field>
+          <Field label="Pasos del recorrido (4 cards)">
             <div className="space-y-3">
-              {content.problem.pieces.map((piece, i) => (
-                <div key={i} className="flex flex-col gap-2 rounded-lg border border-white/10 p-3 sm:flex-row sm:items-center">
+              {content.problem.steps.map((step, i) => (
+                <div key={i} className="space-y-2 rounded-lg border border-white/10 p-3">
+                  <div className="flex items-center gap-2">
+                    <input
+                      value={step.title}
+                      onChange={(e) => {
+                        const next = [...content.problem.steps];
+                        next[i] = { ...next[i], title: e.target.value };
+                        update("problem", { ...content.problem, steps: next });
+                      }}
+                      placeholder="Título (ej. Atraes)"
+                      className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange"
+                    />
+                    <RemoveButton
+                      onClick={() =>
+                        update("problem", {
+                          ...content.problem,
+                          steps: content.problem.steps.filter((_, idx) => idx !== i),
+                        })
+                      }
+                    />
+                  </div>
                   <input
-                    value={piece.label}
+                    value={step.tag}
                     onChange={(e) => {
-                      const next = [...content.problem.pieces];
-                      next[i] = { ...next[i], label: e.target.value };
-                      update("problem", { ...content.problem, pieces: next });
+                      const next = [...content.problem.steps];
+                      next[i] = { ...next[i], tag: e.target.value };
+                      update("problem", { ...content.problem, steps: next });
                     }}
-                    placeholder="Etiqueta"
-                    className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange sm:w-40"
-                  />
-                  <input
-                    value={piece.note}
-                    onChange={(e) => {
-                      const next = [...content.problem.pieces];
-                      next[i] = { ...next[i], note: e.target.value };
-                      update("problem", { ...content.problem, pieces: next });
-                    }}
-                    placeholder="Nota"
+                    placeholder="Categoría (ej. Publicidad · contenido)"
                     className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange"
                   />
-                  <RemoveButton
-                    onClick={() =>
-                      update("problem", {
-                        ...content.problem,
-                        pieces: content.problem.pieces.filter((_, idx) => idx !== i),
-                      })
-                    }
+                  <textarea
+                    value={step.desc}
+                    onChange={(e) => {
+                      const next = [...content.problem.steps];
+                      next[i] = { ...next[i], desc: e.target.value };
+                      update("problem", { ...content.problem, steps: next });
+                    }}
+                    rows={2}
+                    placeholder="Descripción"
+                    className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange"
+                  />
+                  <input
+                    value={step.flag}
+                    onChange={(e) => {
+                      const next = [...content.problem.steps];
+                      next[i] = { ...next[i], flag: e.target.value };
+                      update("problem", { ...content.problem, steps: next });
+                    }}
+                    placeholder="Alerta corta (ej. Interés sin identificar)"
+                    className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-empirika-orange"
                   />
                 </div>
               ))}
               <AddButton
-                label="Agregar pieza"
+                label="Agregar paso"
                 onClick={() =>
                   update("problem", {
                     ...content.problem,
-                    pieces: [...content.problem.pieces, { label: "", note: "" }],
+                    steps: [...content.problem.steps, { title: "", tag: "", desc: "", flag: "" }],
                   })
                 }
               />

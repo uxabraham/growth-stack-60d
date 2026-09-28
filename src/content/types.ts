@@ -28,11 +28,18 @@ export type VslContent = {
   videoUrl: string;
 };
 
-export type ProblemPiece = { label: string; note: string };
+export type ProblemStep = {
+  title: string;
+  tag: string;
+  desc: string;
+  flag: string;
+};
 export type ProblemContent = {
+  eyebrow: string;
   titleLine1: string;
   titleLine2: string;
-  pieces: ProblemPiece[];
+  paragraph: string;
+  steps: ProblemStep[];
   closingLine1: string;
   closingLine2: string;
 };
