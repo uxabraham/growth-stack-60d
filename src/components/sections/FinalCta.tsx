@@ -8,7 +8,7 @@ export default function FinalCta({ content }: { content: FinalCtaContent }) {
   return (
     <section
       id="evaluacion"
-      className="relative overflow-hidden bg-surface-deep py-20 text-on-deep sm:py-32"
+      className="relative overflow-hidden bg-surface-deep py-16 text-on-deep sm:py-24"
     >
       <div
         aria-hidden

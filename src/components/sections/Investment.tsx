@@ -7,7 +7,7 @@ import type { InvestmentContent } from "@/content/types";
 
 export default function Investment({ content }: { content: InvestmentContent }) {
   return (
-    <section id="inversion" className="bg-white py-20 sm:py-32">
+    <section id="inversion" className="bg-white py-16 sm:py-24">
       <Container>
         <Reveal trackId="investment">
           <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-gradient-to-br from-zinc-50 via-white to-white px-6 py-16 sm:px-10 sm:py-20 lg:px-14">

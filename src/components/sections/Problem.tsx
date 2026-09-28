@@ -30,7 +30,7 @@ function ArrowConnector() {
 
 export default function Problem({ content }: { content: ProblemContent }) {
   return (
-    <section id="problema" className="bg-white py-20 sm:py-32">
+    <section id="problema" className="bg-white py-16 sm:py-24">
       <Container>
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">

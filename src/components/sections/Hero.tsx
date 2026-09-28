@@ -17,7 +17,7 @@ export default function Hero({
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-surface-deep pb-20 pt-28 text-on-deep sm:pb-24 sm:pt-40"
+      className="relative overflow-hidden bg-surface-deep pb-16 pt-24 text-on-deep sm:pb-20 sm:pt-32"
     >
       <div
         aria-hidden

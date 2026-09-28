@@ -20,7 +20,7 @@ function QuoteMark() {
 
 export default function CasesAuthority({ content }: { content: CasesContent }) {
   return (
-    <section id="casos" className="bg-white py-20 sm:py-32">
+    <section id="casos" className="bg-white py-16 sm:py-24">
       <Container>
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">

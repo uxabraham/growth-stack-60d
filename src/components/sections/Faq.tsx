@@ -11,7 +11,7 @@ export default function Faq({ content }: { content: FaqContent }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-surface-deep py-20 text-on-deep sm:py-32">
+    <section id="faq" className="bg-surface-deep py-16 text-on-deep sm:py-24">
       <Container>
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">

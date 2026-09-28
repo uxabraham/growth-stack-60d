@@ -6,7 +6,7 @@ import type { ForWhoNotContent } from "@/content/types";
 
 export default function ForWhoNot({ content }: { content: ForWhoNotContent }) {
   return (
-    <section id="filtro" className="bg-surface-deep py-20 text-on-deep sm:py-32">
+    <section id="filtro" className="bg-surface-deep py-16 text-on-deep sm:py-24">
       <Container>
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">

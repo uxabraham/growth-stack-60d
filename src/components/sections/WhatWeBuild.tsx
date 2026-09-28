@@ -6,7 +6,7 @@ import type { WhatWeBuildContent } from "@/content/types";
 
 export default function WhatWeBuild({ content }: { content: WhatWeBuildContent }) {
   return (
-    <section id="que-construimos" className="bg-white py-20 sm:py-32">
+    <section id="que-construimos" className="bg-white py-16 sm:py-24">
       <Container>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,360px)_1fr] lg:gap-16">
           {/* Pinned left column */}

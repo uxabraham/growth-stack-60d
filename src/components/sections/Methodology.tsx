@@ -7,7 +7,7 @@ import type { MethodologyContent } from "@/content/types";
 
 export default function Methodology({ content }: { content: MethodologyContent }) {
   return (
-    <section id="metodologia" className="bg-white py-20 sm:py-32">
+    <section id="metodologia" className="bg-white py-16 sm:py-24">
       <Container>
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
